@@ -1,0 +1,124 @@
+<html>
+  <head>
+    <title>报纸阅读列表</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <h2 id="time"></h2>
+
+    <h3>参考消息</h3>
+    <p>
+      <a href="https://www.hqck.net/ckxx.html" target="_blank">点击查看</a>
+    </p>
+
+    <h3>环球时报</h3>
+    <p>
+      <a href="https://www.hqck.net/hqsb.html" target="_blank">点击查看</a>
+    </p>
+
+    <h3>人民日报</h3>
+    <p id="people-daily"></p>
+
+    <h3>经济日报</h3>
+    <p id="economic-daily"></p>
+
+    <h3>北京日报</h3>
+    <p id="beijing-daily"></p>
+
+    <h3>广州日报</h3>
+    <p id="guangzhou-daily"></p>
+
+    <hr />
+
+    <h3 style="color: red">北京晚报（当天傍晚）</h3>
+    <p id="beijing-night"></p>
+  </body>
+  <script>
+    window.onload = function() {
+      let dToday = new Date();
+
+      let nYear = dToday.getFullYear();
+      let nMonth = dToday.getMonth() + 1;
+      let nDate = dToday.getDate();
+      let nDay = dToday.getDay();
+
+      let sMonth = `${nMonth > 9 ? '' : '0'}${nMonth}`;
+      let sDate = `${nDate > 9 ? '' : '0'}${nDate}`;
+      let sDay = ['日', '一', '二', '三', '四', '五', '六'][nDay];
+
+      // 设置当天日期
+      let domTime = document.getElementById('time');
+      domTime.innerText = `日期：${nYear}年${nMonth}月${nDate}日，星期${sDay}`;
+
+      // 生成人民日报的节点
+      let domPeopleDaily = document.getElementById('people-daily');
+      let nPeopleDailyPageLength = (nDay === 0 || nDay === 6) ? 8 : 20;
+
+      for (let i = 0; i < nPeopleDailyPageLength; i++) {
+        let aLink = document.createElement('a');
+        let sCount = `${i >= 9 ? '' : '0'}${i + 1}`
+        aLink.style = 'display: inline-block; margin-right: 10px';
+        aLink.setAttribute('target', '_blank');
+        aLink.setAttribute('href', `http://paper.people.com.cn/rmrb/page/${nYear}-${sMonth}/${sDate}/${sCount}/rmrb${nYear}${sMonth}${sDate}${sCount}.pdf`);
+        aLink.innerText = i + 1 + '版';
+        domPeopleDaily.appendChild(aLink);
+      }
+
+      // 生成经济日报的节点
+      let domEconomicDaily = document.getElementById('economic-daily');
+
+      for (let i = 0; i < 12; i++) {
+        let aLink = document.createElement('a');
+        let sCount = `${i >= 9 ? '' : '0'}${i + 1}`
+        aLink.style = 'display: inline-block; margin-right: 10px';
+        aLink.setAttribute('target', '_blank');
+        aLink.setAttribute('href', `http://paper.ce.cn/jjrb/page/1/${nYear}-${sMonth}/${sDate}/${sCount}/${nYear}${sMonth}${sDate}${sCount}_pdf.pdf`);
+        aLink.innerText = i + 1 + '版';
+        domEconomicDaily.appendChild(aLink);
+      }
+
+      // 生成北京日报的节点
+      let domBeijingDaily = document.getElementById('beijing-daily');
+
+      let nBeijingDailyPageLength;
+      if (nDay === 0) nBeijingDailyPageLength = 4; // 周日
+      else if (nDay === 6) nBeijingDailyPageLength = 8 // 周六
+      else nBeijingDailyPageLength = 16; // 周一~周五
+
+      for (let i = 0; i < nBeijingDailyPageLength; i++) {
+        let aLink = document.createElement('a');
+        let sCount = `${i >= 9 ? '' : '0'}${i + 1}`
+        aLink.style = 'display: inline-block; margin-right: 10px';
+        aLink.setAttribute('target', '_blank');
+        aLink.setAttribute('href', `http://bjrb.bjd.com.cn/images/${nYear}-${sMonth}/${sDate}/${sCount}/${sCount}.pdf`);
+        aLink.innerText = i + 1 + '版';
+        domBeijingDaily.appendChild(aLink);
+      }
+
+      // 生成广州日报的节点
+      let domGuangzhouDaily = document.getElementById('guangzhou-daily');
+      let aGuangzhouLink = document.createElement('a');
+      aGuangzhouLink.setAttribute('target', '_blank');
+      aGuangzhouLink.setAttribute('href', `https://gzdaily.dayoo.com/pc/html/${nYear}-${sMonth}/${sDate}/index_${nYear}-${sMonth}-${sDate}.htm`);
+      aGuangzhouLink.innerText = '点击查看';
+      domGuangzhouDaily.appendChild(aGuangzhouLink);
+
+      // 生成北京晚报的节点
+      let domBeijingNight = document.getElementById('beijing-night');
+
+      let nBeijingNightPageLength;
+      if (nDay === 6 || nDay === 0 || nDay === 1) nBeijingNightPageLength = 16; // 周六、周日、周一
+      else nBeijingNightPageLength = 24; // 周二~周五
+
+      for (let i = 0; i < nBeijingNightPageLength; i++) {
+        let aLink = document.createElement('a');
+        let sCount = `${i >= 9 ? '' : '0'}${i + 1}`
+        aLink.style = 'display: inline-block; margin-right: 10px';
+        aLink.setAttribute('target', '_blank');
+        aLink.setAttribute('href', `http://bjwb.bjd.com.cn/images/${nYear}-${sMonth}/${sDate}/${sCount}/${sCount}.pdf`);
+        aLink.innerText = i + 1 + '版';
+        domBeijingNight.appendChild(aLink);
+      }
+    }
+  </script>
+</html>
