@@ -20,14 +20,10 @@
     <p id="bjnews-c"></p>
 
     <h3>参考消息</h3>
-    <p>
-      <a href="https://www.hqck.net/ckxx.html" target="_blank">点击查看</a>
-    </p>
+    <p id="cankaoxiaoxi"></p>
 
     <h3>环球时报</h3>
-    <p>
-      <a href="https://www.hqck.net/hqsb.html" target="_blank">点击查看</a>
-    </p>
+    <p id="huanqiushibao"></p>
 
     <h3>人民日报</h3>
     <p id="people-daily"></p>
@@ -43,7 +39,7 @@
 
     <hr />
 
-    <h3 style="color: red">北京晚报（当天傍晚）</h3>
+    <h3 style="color: red">北京晚报（当天下午）</h3>
     <p id="beijing-night"></p>
   </body>
   <script>
@@ -62,6 +58,22 @@
       // 当天日期
       let domTime = document.getElementById('time');
       domTime.innerText = `日期：${nYear}年${nMonth}月${nDate}日，星期${sDay}`;
+
+      // 参考消息
+      let domCankaoxiaoxi = document.getElementById('cankaoxiaoxi');
+      let aCankaoxiaoxiLink = document.createElement('a');
+      aCankaoxiaoxiLink.setAttribute('target', '_blank');
+      aCankaoxiaoxiLink.setAttribute('href', `https://www.hqck.net/ckxx.html?t=${nYear}${sMonth}${sDate}`);
+      aCankaoxiaoxiLink.innerText = '点击查看';
+      domCankaoxiaoxi.appendChild(aCankaoxiaoxiLink);
+
+      // 环球时报
+      let domHuanqiushibao = document.getElementById('huanqiushibao');
+      let aHuanqiushibaoLink = document.createElement('a');
+      aHuanqiushibaoLink.setAttribute('target', '_blank');
+      aHuanqiushibaoLink.setAttribute('href', `https://www.hqck.net/hqsb.html?t=${nYear}${sMonth}${sDate}`);
+      aHuanqiushibaoLink.innerText = '点击查看';
+      domHuanqiushibao.appendChild(aHuanqiushibaoLink);
 
       // 新京报 A 版
       let domBJnewsA = document.getElementById('bjnews-a');
@@ -148,7 +160,7 @@
       let domGuangzhouDaily = document.getElementById('guangzhou-daily');
       let aGuangzhouLink = document.createElement('a');
       aGuangzhouLink.setAttribute('target', '_blank');
-      aGuangzhouLink.setAttribute('href', `https://gzdaily.dayoo.com/pc/html/${nYear}-${sMonth}/${sDate}/index_${nYear}-${sMonth}-${sDate}.htm`);
+      aGuangzhouLink.setAttribute('href', `https://gzdaily.dayoo.com/pc/html/${nYear}-${sMonth}/${sDate}/index_${nYear}-${sMonth}-${sDate}.htm?t=${nYear}${sMonth}${sDate}`);
       aGuangzhouLink.innerText = '点击查看';
       domGuangzhouDaily.appendChild(aGuangzhouLink);
 
