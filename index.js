@@ -21,7 +21,7 @@ function startSetting() {
   setPeopleDaily();
   setEconomicDaily();
   setBeijingDaily();
-  setGuangzhouDaily();
+  setYangchengDaily();
   setBeijingNight();
   setChinaBusinessJournal();
   setScienceAndTechDaily();
@@ -178,15 +178,35 @@ function setBeijingDaily() {
 }
 
 /**
- * 广州日报
+ * 羊城晚报
  */
-function setGuangzhouDaily() {
-  let domGuangzhouDaily = document.getElementById('guangzhou-daily');
-  let aGuangzhouLink = document.createElement('a');
-  aGuangzhouLink.setAttribute('target', '_blank');
-  aGuangzhouLink.setAttribute('href', `https://gzdaily.dayoo.com/pc/html/${nYear}-${sMonth}/${sDate}/index_${nYear}-${sMonth}-${sDate}.htm?t=${nYear}${sMonth}${sDate}`);
-  aGuangzhouLink.innerText = '点击查看';
-  domGuangzhouDaily.appendChild(aGuangzhouLink);
+function setYangchengDaily() {
+  let domYangchengDaily = document.getElementById('yangcheng-daily');
+
+  let nLength;
+  if (nDay === 6 || nDay === 0) nLength = 8; // 周六、周日
+  else nLength = 16; // 周一~周五
+
+  for (let i = 0; i < nLength; i++) {
+    let aLink01 = document.createElement('a');
+    let aLink02 = document.createElement('a');
+
+    let sCount = `${i >= 9 ? '' : '0'}${i + 1}`
+    
+    aLink01.style = 'display: inline-block; margin-right: 10px; margin-bottom: 10px;';
+    aLink01.setAttribute('target', '_blank');
+    aLink02.style = 'display: inline-block; margin-right: 10px; margin-bottom: 10px;';
+    aLink02.setAttribute('target', '_blank');
+
+    aLink01.setAttribute('href', `http://ep.ycwb.com/epaper/ycwb/resfile/${nYear}-${sMonth}-${sDate}/A${sCount}/ycwb${nYear}${sMonth}${sDate}A${sCount}.pdf`);
+    aLink02.setAttribute('href', `http://ep.ycwb.com/epaper/ycwb/resfile/${nYear}-${sMonth}-${sDate}/A${sCount}G/ycwb${nYear}${sMonth}${sDate}A${sCount}G.pdf`);
+    
+    aLink01.innerText = i + 1 + '版';
+    aLink02.innerText = i + 1 + '版G';
+    
+    domYangchengDaily.appendChild(aLink01);
+    domYangchengDaily.appendChild(aLink02);
+  }
 }
 
 /**
