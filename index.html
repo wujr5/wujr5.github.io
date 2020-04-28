@@ -2,8 +2,10 @@
   <head>
     <title>报纸阅读列表</title>
     <meta charset="utf-8" />
+    <script src="index.js"></script>
   </head>
-  <body>
+  <body style="padding: 20px;">
+    
     <h2 id="time"></h2>
     
     <!-- Todo list -->
@@ -41,21 +43,30 @@
     </p>
 
     <h3 style="color: green">新京报</h3>
-    <p id="bjnews-a"></p>
-    <p id="bjnews-b"></p>
-    <p id="bjnews-c"></p>
-
-    <h3>北京日报</h3>
-    <p id="beijing-daily"></p>
-
-    <h3>经济日报</h3>
-    <p id="economic-daily"></p>
-
-    <h3 style="color: green">人民日报</h3>
-    <p id="people-daily"></p>
+    <p id="bjnews-a"><button style="margin-right: 10px;cursor: pointer;" onclick="openMultiTabs('bjnews-a')">打开</button></p>
+    <p id="bjnews-b"><button style="margin-right: 10px;cursor: pointer;" onclick="openMultiTabs('bjnews-b')">打开</button></p>
+    <p id="bjnews-c"><button style="margin-right: 10px;cursor: pointer;" onclick="openMultiTabs('bjnews-c')">打开</button></p>
 
     <h3>广州日报</h3>
     <p id="guangzhou-daily"></p>
+
+    <h3>北京日报</h3>
+    <p id="beijing-daily"><button style="margin-right: 10px;cursor: pointer;" onclick="openMultiTabs('beijing-daily')">打开</button></p>
+
+    <h3>经济日报</h3>
+    <p id="economic-daily"><button style="margin-right: 10px;cursor: pointer;" onclick="openMultiTabs('economic-daily')">打开</button></p>
+
+    <h3 style="color: green">人民日报</h3>
+    <p id="people-daily"><button style="margin-right: 10px;cursor: pointer;" onclick="openMultiTabs('people-daily')">打开</button></p>
+
+    <h3>科技日报（周一到周五）</h3>
+    <p id="science-and-tech-daily"><button style="margin-right: 10px;cursor: pointer;" onclick="openMultiTabs('science-and-tech-daily')">打开</button></p>
+
+    <h3>每日经济新闻（周一到周五）</h3>
+    <p id="national-business-daily"><button style="margin-right: 10px;cursor: pointer;" onclick="openMultiTabs('national-business-daily')">打开</button></p>
+
+    <h3>证券时报（周一到周六）</h3>
+    <p id="securities-times"><button style="margin-right: 10px;cursor: pointer;" onclick="openMultiTabs('securities-times')">打开</button></p>
 
     <hr />
 
@@ -66,146 +77,22 @@
     <p id="huanqiushibao"></p>
 
     <h3 style="color: red">北京晚报</h3>
-    <p id="beijing-night"></p>
+    <p id="beijing-night"><button style="margin-right: 10px;cursor: pointer;" onclick="openMultiTabs('beijing-night')">打开</button></p>
+
+    <hr />
+
+    <h3>
+      <a href="http://dianzibao.cb.com.cn/" target="_blank">中国经营报（每周一）</a>，
+      年：<input id="china-business-journal-year" type="text" style="width: 50px;"/>
+      月：<input id="china-business-journal-month" type="text" style="width: 30px;"/>
+      日：<input id="china-business-journal-day" type="text" style="width: 30px;"/>，
+      第<input id="china-business-journal-number" type="text" style="margin-left: 10px; margin-right: 10px; width: 50px;"/>期，
+      <button id="china-business-journal-btn" style="cursor: pointer;">确定</button>
+    </h3>
+
+    <button style="margin-right: 10px;cursor: pointer;" onclick="openMultiTabs('china-business-journal', 0, 24)">打开前半</button>
+    <button style="margin-right: 10px;cursor: pointer;" onclick="openMultiTabs('china-business-journal', 24, 48)">打开后半</button>
+    <p id="china-business-journal"></p>
+
   </body>
-  <script>
-    window.onload = function() {
-      let dToday = new Date();
-
-      let nYear = dToday.getFullYear();
-      let nMonth = dToday.getMonth() + 1;
-      let nDate = dToday.getDate();
-      let nDay = dToday.getDay();
-
-      let sMonth = `${nMonth > 9 ? '' : '0'}${nMonth}`;
-      let sDate = `${nDate > 9 ? '' : '0'}${nDate}`;
-      let sDay = ['日', '一', '二', '三', '四', '五', '六'][nDay];
-
-      // 当天日期
-      let domTime = document.getElementById('time');
-      domTime.innerText = `日期：${nYear}年${nMonth}月${nDate}日，星期${sDay}`;
-
-      // 参考消息
-      let domCankaoxiaoxi = document.getElementById('cankaoxiaoxi');
-      let aCankaoxiaoxiLink = document.createElement('a');
-      aCankaoxiaoxiLink.setAttribute('target', '_blank');
-      aCankaoxiaoxiLink.setAttribute('href', `https://www.hqck.net/ckxx.html?t=${nYear}${sMonth}${sDate}`);
-      aCankaoxiaoxiLink.innerText = '点击查看';
-      domCankaoxiaoxi.appendChild(aCankaoxiaoxiLink);
-
-      // 环球时报
-      let domHuanqiushibao = document.getElementById('huanqiushibao');
-      let aHuanqiushibaoLink = document.createElement('a');
-      aHuanqiushibaoLink.setAttribute('target', '_blank');
-      aHuanqiushibaoLink.setAttribute('href', `https://www.hqck.net/hqsb.html?t=${nYear}${sMonth}${sDate}`);
-      aHuanqiushibaoLink.innerText = '点击查看';
-      domHuanqiushibao.appendChild(aHuanqiushibaoLink);
-
-      // 新京报 A 版
-      let domBJnewsA = document.getElementById('bjnews-a');
-      for (let i = 0; i < 16; i++) {
-        let aLink = document.createElement('a');
-        let sCount = `${i >= 9 ? '' : '0'}${i + 1}`
-        aLink.style = 'display: inline-block; margin-right: 10px';
-        aLink.setAttribute('target', '_blank');
-        aLink.setAttribute('href', `http://appimg2.tbnimg.com/ipaper/data/${nYear}-${sMonth}/${sDate}/A${sCount}/xjb${nYear}${sMonth}${sDate}A${sCount}.pdf`);
-        aLink.innerText = 'A' + (i + 1) + '版';
-        domBJnewsA.appendChild(aLink);
-      }
-
-      // 新京报 B 版
-      let domBJnewsB = document.getElementById('bjnews-b');
-      for (let i = 0; i < 8; i++) {
-        let aLink = document.createElement('a');
-        let sCount = `${i >= 9 ? '' : '0'}${i + 1}`
-        aLink.style = 'display: inline-block; margin-right: 10px';
-        aLink.setAttribute('target', '_blank');
-        aLink.setAttribute('href', `http://appimg2.tbnimg.com/ipaper/data/${nYear}-${sMonth}/${sDate}/B${sCount}/xjb${nYear}${sMonth}${sDate}B${sCount}.pdf`);
-        aLink.innerText = 'B' + (i + 1) + '版';
-        domBJnewsB.appendChild(aLink);
-      }
-
-      // 新京报 B 版
-      let domBJnewsC = document.getElementById('bjnews-c');
-      for (let i = 0; i < 8; i++) {
-        let aLink = document.createElement('a');
-        let sCount = `${i >= 9 ? '' : '0'}${i + 1}`
-        aLink.style = 'display: inline-block; margin-right: 10px';
-        aLink.setAttribute('target', '_blank');
-        aLink.setAttribute('href', `http://appimg2.tbnimg.com/ipaper/data/${nYear}-${sMonth}/${sDate}/C${sCount}/xjb${nYear}${sMonth}${sDate}C${sCount}.pdf`);
-        aLink.innerText = 'C' + (i + 1) + '版';
-        domBJnewsC.appendChild(aLink);
-      }
-
-      // 人民日报
-      let domPeopleDaily = document.getElementById('people-daily');
-      let nPeopleDailyPageLength = (nDay === 0 || nDay === 6) ? 8 : 20;
-
-      for (let i = 0; i < nPeopleDailyPageLength; i++) {
-        let aLink = document.createElement('a');
-        let sCount = `${i >= 9 ? '' : '0'}${i + 1}`
-        aLink.style = 'display: inline-block; margin-right: 10px';
-        aLink.setAttribute('target', '_blank');
-        aLink.setAttribute('href', `http://paper.people.com.cn/rmrb/page/${nYear}-${sMonth}/${sDate}/${sCount}/rmrb${nYear}${sMonth}${sDate}${sCount}.pdf`);
-        aLink.innerText = i + 1 + '版';
-        domPeopleDaily.appendChild(aLink);
-      }
-
-      // 经济日报
-      let domEconomicDaily = document.getElementById('economic-daily');
-
-      for (let i = 0; i < 12; i++) {
-        let aLink = document.createElement('a');
-        let sCount = `${i >= 9 ? '' : '0'}${i + 1}`
-        aLink.style = 'display: inline-block; margin-right: 10px';
-        aLink.setAttribute('target', '_blank');
-        aLink.setAttribute('href', `http://paper.ce.cn/jjrb/page/1/${nYear}-${sMonth}/${sDate}/${sCount}/${nYear}${sMonth}${sDate}${sCount}_pdf.pdf`);
-        aLink.innerText = i + 1 + '版';
-        domEconomicDaily.appendChild(aLink);
-      }
-
-      // 北京日报
-      let domBeijingDaily = document.getElementById('beijing-daily');
-
-      let nBeijingDailyPageLength;
-      if (nDay === 0) nBeijingDailyPageLength = 4; // 周日
-      else if (nDay === 6) nBeijingDailyPageLength = 8 // 周六
-      else nBeijingDailyPageLength = 16; // 周一~周五
-
-      for (let i = 0; i < nBeijingDailyPageLength; i++) {
-        let aLink = document.createElement('a');
-        let sCount = `${i >= 9 ? '' : '0'}${i + 1}`
-        aLink.style = 'display: inline-block; margin-right: 10px';
-        aLink.setAttribute('target', '_blank');
-        aLink.setAttribute('href', `http://bjrb.bjd.com.cn/images/${nYear}-${sMonth}/${sDate}/${sCount}/${sCount}.pdf`);
-        aLink.innerText = i + 1 + '版';
-        domBeijingDaily.appendChild(aLink);
-      }
-
-      // 广州日报
-      let domGuangzhouDaily = document.getElementById('guangzhou-daily');
-      let aGuangzhouLink = document.createElement('a');
-      aGuangzhouLink.setAttribute('target', '_blank');
-      aGuangzhouLink.setAttribute('href', `https://gzdaily.dayoo.com/pc/html/${nYear}-${sMonth}/${sDate}/index_${nYear}-${sMonth}-${sDate}.htm?t=${nYear}${sMonth}${sDate}`);
-      aGuangzhouLink.innerText = '点击查看';
-      domGuangzhouDaily.appendChild(aGuangzhouLink);
-
-      // 北京晚报
-      let domBeijingNight = document.getElementById('beijing-night');
-
-      let nBeijingNightPageLength;
-      if (nDay === 6 || nDay === 0 || nDay === 1) nBeijingNightPageLength = 16; // 周六、周日、周一
-      else nBeijingNightPageLength = 32; // 周二~周五
-
-      for (let i = 0; i < nBeijingNightPageLength; i++) {
-        let aLink = document.createElement('a');
-        let sCount = `${i >= 9 ? '' : '0'}${i + 1}`
-        aLink.style = 'display: inline-block; margin-right: 10px';
-        aLink.setAttribute('target', '_blank');
-        aLink.setAttribute('href', `http://bjwb.bjd.com.cn/images/${nYear}-${sMonth}/${sDate}/${sCount}/${sCount}.pdf`);
-        aLink.innerText = i + 1 + '版';
-        domBeijingNight.appendChild(aLink);
-      }
-    }
-  </script>
 </html>
