@@ -202,10 +202,10 @@ function setYangchengDaily() {
     aLink02.setAttribute('href', `http://ep.ycwb.com/epaper/ycwb/resfile/${nYear}-${sMonth}-${sDate}/A${sCount}G/ycwb${nYear}${sMonth}${sDate}A${sCount}G.pdf`);
     
     aLink01.innerText = i + 1 + '版';
-    aLink02.innerText = i + 1 + '版G';
+    i > 9 && (aLink02.innerText = i + 1 + '版G');
     
     domYangchengDaily.appendChild(aLink01);
-    domYangchengDaily.appendChild(aLink02);
+    i > 9 && domYangchengDaily.appendChild(aLink02);
   }
 }
 
