@@ -14,7 +14,9 @@ let sDay = ['日', '一', '二', '三', '四', '五', '六'][nDay]; // 星期（
  */
 function startSetting() {
   setDate();
-  
+
+  updateQueryString();
+
   setCankao();
   setHuanqiu();
   setBJnews();
@@ -44,6 +46,17 @@ function openMultiTabs(id, start, end) {
   for (let i = start || 0; i < (end || domTarget.length); i++) {
     let url = domTarget[i].getAttribute('href');
     window.open(url);
+  }
+}
+
+/**
+ * todo list 更新日期后缀
+ */
+function updateQueryString() {
+  let domTodolistLink = document.querySelectorAll('#todolist a');
+
+  for (let i = 0; i < domTodolistLink.length; i++) {
+    domTodolistLink[i].setAttribute('href', `${domTodolistLink[i].href}?t=${nYear}${sMonth}${sDate}`)
   }
 }
 
