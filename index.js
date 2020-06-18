@@ -25,10 +25,10 @@ function startSetting() {
   setBeijingDaily();
   setYangchengDaily();
   setBeijingNight();
-  setChinaBusinessJournal();
-  setScienceAndTechDaily();
-  setSecuritiesTimes();
-  setNationBusinessDaily();
+  // setChinaBusinessJournal();
+  // setScienceAndTechDaily();
+  // setSecuritiesTimes();
+  // setNationBusinessDaily();
 }
 
 window.onload = startSetting;
