@@ -145,7 +145,7 @@ function setPeopleDaily() {
     let sCount = `${i >= 9 ? '' : '0'}${i + 1}`
     aLink.style = 'display: inline-block; margin-right: 10px; margin-bottom: 10px;';
     aLink.setAttribute('target', '_blank');
-    aLink.setAttribute('href', `http://paper.people.com.cn/rmrb/page/${nYear}-${sMonth}/${sDate}/${sCount}/rmrb${nYear}${sMonth}${sDate}${sCount}.pdf`);
+    aLink.setAttribute('href', `http://paper.people.com.cn/rmrb/images/${nYear}-${sMonth}/${sDate}/${sCount}/rmrb${nYear}${sMonth}${sDate}${sCount}.pdf`);
     aLink.innerText = i + 1 + '版';
     domPeopleDaily.appendChild(aLink);
   }
