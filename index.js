@@ -24,7 +24,7 @@ function startSetting() {
   setEconomicDaily();
   // setBeijingDaily();
   setYangchengDaily();
-  setBeijingNight();
+  // setBeijingNight();
   // setChinaBusinessJournal();
   // setScienceAndTechDaily();
   // setSecuritiesTimes();
