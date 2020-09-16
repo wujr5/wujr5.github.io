@@ -22,7 +22,7 @@ function startSetting() {
   setBJnews();
   setPeopleDaily();
   setEconomicDaily();
-  setBeijingDaily();
+  // setBeijingDaily();
   setYangchengDaily();
   setBeijingNight();
   // setChinaBusinessJournal();
