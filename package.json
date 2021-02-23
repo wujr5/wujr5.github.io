@@ -1,0 +1,22 @@
+{
+  "name": "wujr5.github.io",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "core-js": "3.8.3",
+    "nuxt": "2.14.12",
+    "pug": "3.0.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "7.12.17",
+    "glob-all": "3.2.1",
+    "pug-plain-loader": "1.1.0",
+    "purgecss-webpack-plugin": "4.0.2"
+  }
+}
