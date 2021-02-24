@@ -1,113 +1,70 @@
 <template lang="pug">
   .p-20
-    h2#time
-    // Todo list
-    p
-    ul#todolist
-      li
-        label(for='todo16' style='cursor: pointer;') 猫和打扫：
-        input#todo16(type='checkbox' style='cursor: pointer;')
-      li
-        label(for='todo3' style='cursor: pointer;')
-          a(href='https://weibo.com/mygroups?gid=3921172360211603&wvr=6&leftnav=1&isspecialgroup=1' target='_blank') 特别关注：
-        input#todo3(type='checkbox' style='cursor: pointer;')
-      li
-        label(for='todo5' style='cursor: pointer;')
-          a(href='https://t.bilibili.com/' target='_blank') B 站时政：
-        input#todo5(type='checkbox' style='cursor: pointer;')
-      li
-        label(for='todo4' style='cursor: pointer;')
-          a(href='https://s.weibo.com/top/summary?cate=realtimehot' target='_blank') 微博热搜：
-        input#todo4(type='checkbox' style='cursor: pointer;')
-      li
-        label(for='todo6' style='cursor: pointer;')
-          a(href='https://www.youtube.com/feed/subscriptions' target='_blank') 油管时政：
-        input#todo6(type='checkbox' style='cursor: pointer;')
-      li
-        label(for='todo13' style='cursor: pointer;')
-          a(href='http://forecast.weather.com.cn/town/weather1dn/101010700002.shtml' target='_blank') 今天天气：
-        input#todo13(type='checkbox' style='cursor: pointer;')
-      li
-        label(for='todo19' style='cursor: pointer;')
-          a(href='https://azi.azzico.xyz/user#' target='_blank') 检查代理：
-        input#todo19(type='checkbox' style='cursor: pointer;')
-      li
-        label(for='todo14' style='cursor: pointer;') 检查日历：
-        input#todo14(type='checkbox' style='cursor: pointer;')
-      li
-        label(for='todo15' style='cursor: pointer;')
-          a(href='https://mail.qq.com' target='_blank') 检查邮件：
-        input#todo15(type='checkbox' style='cursor: pointer;')
-      li
-        label(for='todo11' style='cursor: pointer;')
-          a(href='https://www.zhihu.com/hot' target='_blank') 知乎热榜：
-        input#todo11(type='checkbox' style='cursor: pointer;')
-      li
-        label(for='todo7' style='cursor: pointer;')
-          a(href='https://36kr.com/search/articles/8%E7%82%B91%E6%B0%AA%209%E7%82%B91%E6%B0%AA' target='_blank') 8 点 1 氪：
-        input#todo7(type='checkbox' style='cursor: pointer;')
-      li
-        label(for='todo8' style='cursor: pointer;')
-          a(href='https://www.chinastarmarket.cn/telegraph' target='_blank') 科创电报：
-        input#todo8(type='checkbox' style='cursor: pointer;')
-      li
-        label(for='todo10' style='cursor: pointer;')
-          a(href='https://www.gov.cn/' target='_blank') 政府网站：
-        input#todo10(type='checkbox' style='cursor: pointer;')
-      li
-        label(for='todo9' style='cursor: pointer;')
-          a(href='https://www.qcc.com/monitor_dynamic' target='_blank') 风险动态：
-        input#todo9(type='checkbox' style='cursor: pointer;')
-      li
-        label(for='todo17' style='cursor: pointer;')
-          a(href='http://quote.eastmoney.com/center' target='_blank') 行情中心：
-        input#todo17(type='checkbox' style='cursor: pointer;')
-      li
-        label(for='todo18' style='cursor: pointer;')
-          a(href='https://www.oschina.net/news/project' target='_blank') 开源中国：
-        input#todo18(type='checkbox' style='cursor: pointer;')
-      li
-        label(for='todo6' style='cursor: pointer;') 微信时政：
-        input#todo6(type='checkbox' style='cursor: pointer;')
-      li
-        label(for='todo12' style='cursor: pointer;') 微信看看：
-        input#todo12(type='checkbox' style='cursor: pointer;')
-      li
-        label(for='todo1' style='cursor: pointer;') 上午报纸：
-        input#todo1(type='checkbox' style='cursor: pointer;')
-      li
-        label(for='todo2' style='cursor: pointer;') 下午报纸：
-        input#todo2(type='checkbox' style='cursor: pointer;')
-      li
-        label(for='todo20' style='cursor: pointer;')
-          a(href='https://github.com/trending' target='_blank') Github趋势：
-        input#todo20(type='checkbox' style='cursor: pointer;')
-    p
-    h3 新京报
+    h2 {{`${nYear}年${nMonth}月${nDate}日，星期${sWeekDay[nDay]}`}}
+
+    nuxt-link.inbl.mt-10(to="/color") 色相轮
+
+    .my-20.bd-1.br-4.py-30.px-10
+      .inbl.h-24.lh-24.mr-10.mb-10(v-for="todo, index in aTodoList" :key="`todo-${index}`")
+        label.inbl.vtal-top.w-200.t-r.mr-5(:for="`todo-${index}`" style='cursor: pointer;')
+          a(
+            v-if="todo.link"
+            :href="`${todo.link}?t=${sTimeStamp}`"
+            target='_blank'
+          ) {{todo.title}}
+          span(v-else) {{todo.title}}
+        input.inbl.mt-6(:id="`todo-${index}`" type='checkbox' style='cursor: pointer;')
+
+    h3.mb-10 新京报
     p#bjnews-a
       button(style='margin-right: 10px;cursor: pointer;' @click="openMultiTabs('bjnews-a')") 打开
     p#bjnews-b
       button(style='margin-right: 10px;cursor: pointer;' @click="openMultiTabs('bjnews-b')") 打开
     p#bjnews-c
       button(style='margin-right: 10px;cursor: pointer;' @click="openMultiTabs('bjnews-c')") 打开
-    h3 经济日报
+
+    h3.mt-20.mb-10 经济日报
     p#economic-daily
       button(style='margin-right: 10px;cursor: pointer;' @click="openMultiTabs('economic-daily')") 打开
-    h3 人民日报
+
+    h3.mt-20.mb-10 人民日报
     p#people-daily
       button(style='margin-right: 10px;cursor: pointer;' @click="openMultiTabs('people-daily')") 打开
-    hr
-    h3(style='color: red') 参考消息
-    p#cankaoxiaoxi
-    h3(style='color: red') 环球时报
-    p#huanqiushibao
-    h3(style='color: red') 羊城晚报
+
+    hr.my-10.mt-30
+
+    h3.mt-20.mb-10 参考消息
+    p
+      a(:href="`https://www.hqck.net/ckxx.html?t=${sTimeStamp}`" target="_blank") 参考消息
+
+    h3.mt-20.mb-10 环球时报
+    p
+      a(:href="`https://www.hqck.net/hqsb.html?t=${sTimeStamp}`" target="_blank") 环球时报
+
+    h3.mt-20.mb-10 羊城晚报
     p#yangcheng-daily
       button(style='margin-right: 10px;cursor: pointer;' @click="openMultiTabs('yangcheng-daily')") 打开
 </template>
 
 <script>
+import config from '@/assets/config'
+
 export default {
+  data() {
+    let dToday = new Date();
+
+    return {
+      nYear: dToday.getFullYear(),
+      nMonth: dToday.getMonth() + 1,
+      nDate: dToday.getDate(),
+      nDay: dToday.getDay(),
+
+      sWeekDay: ['日', '一', '二', '三', '四', '五', '六'],
+      sTimeStamp: `${dToday.getFullYear()}${dToday.getMonth() + 1}${dToday.getDate()}`,
+
+      aTodoList: config.aTodoList,
+    }
+  },
   methods: {
     /**
      * 打开多个网页
@@ -117,8 +74,7 @@ export default {
      * @param end {number} 可选，结束序号
      */
     openMultiTabs(id, start, end) {
-      let domTarget = document.getElementById(id).querySelectorAll('a');
-      debugger;
+        domTarget = document.getElementById(id).querySelectorAll('a');
       for (let i = start || 0; i < (end || domTarget.length); i++) {
         let url = domTarget[i].getAttribute('href');
         window.open(url);
@@ -134,74 +90,19 @@ export default {
 
     let sMonth = `${nMonth > 9 ? '' : '0'}${nMonth}`; // 月份（用来显示）
     let sDate = `${nDate > 9 ? '' : '0'}${nDate}`; // 日期（用来显示）
-    let sDay = ['日', '一', '二', '三', '四', '五', '六'][nDay]; // 星期（用来显示）
 
     /**
      * 开始设置
      */
     function startSetting() {
-      setDate();
 
-      updateQueryString();
-
-      setCankao();
-      setHuanqiu();
       setBJnews();
       setPeopleDaily();
       setEconomicDaily();
-      // setBeijingDaily();
       setYangchengDaily();
-      // setBeijingNight();
-      // setChinaBusinessJournal();
-      // setScienceAndTechDaily();
-      // setSecuritiesTimes();
-      // setNationBusinessDaily();
     }
 
     startSetting();
-
-    /**
-     * todo list 更新日期后缀
-     */
-    function updateQueryString() {
-      let domTodolistLink = document.querySelectorAll('#todolist a');
-
-      for (let i = 0; i < domTodolistLink.length; i++) {
-        domTodolistLink[i].setAttribute('href', `${domTodolistLink[i].href}?t=${nYear}${sMonth}${sDate}`)
-      }
-    }
-
-    /**
-     * 设置显示时间
-     */
-    function setDate() {
-      let domTime = document.getElementById('time');
-      domTime.innerText = `${nYear}年${nMonth}月${nDate}日，星期${sDay}`;
-    }
-
-    /**
-     * 参考消息
-     */
-    function setCankao() {
-      let domCankaoxiaoxi = document.getElementById('cankaoxiaoxi');
-      let aCankaoxiaoxiLink = document.createElement('a');
-      aCankaoxiaoxiLink.setAttribute('target', '_blank');
-      aCankaoxiaoxiLink.setAttribute('href', `https://www.hqck.net/ckxx.html?t=${nYear}${sMonth}${sDate}`);
-      aCankaoxiaoxiLink.innerText = '点击查看';
-      domCankaoxiaoxi.appendChild(aCankaoxiaoxiLink);
-    }
-
-    /**
-     * 环球时报
-     */
-    function setHuanqiu() {
-      let domHuanqiushibao = document.getElementById('huanqiushibao');
-      let aHuanqiushibaoLink = document.createElement('a');
-      aHuanqiushibaoLink.setAttribute('target', '_blank');
-      aHuanqiushibaoLink.setAttribute('href', `https://www.hqck.net/hqsb.html?t=${nYear}${sMonth}${sDate}`);
-      aHuanqiushibaoLink.innerText = '点击查看';
-      domHuanqiushibao.appendChild(aHuanqiushibaoLink);
-    }
 
     /**
      * 新京报
@@ -310,8 +211,6 @@ export default {
         i > 9 && domYangchengDaily.appendChild(aLink02);
       }
     }
-
-
   }
 }
 </script>

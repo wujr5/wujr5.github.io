@@ -1,0 +1,26 @@
+/* 2019.04.23（二）：不知原因为何，项目中的 css 会把「-webkit-box-orient: vertical;」处理掉，因此独立出来 */
+
+.te {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: initial;
+}
+
+/* 多行省略 1 ~ 5 */
+.te-1 {
+  -webkit-line-clamp: 1;
+}
+.te-2 {
+  -webkit-line-clamp: 2;
+}
+.te-3 {
+  -webkit-line-clamp: 3;
+}
+.te-4 {
+  -webkit-line-clamp: 4;
+}
+.te-5 {
+  -webkit-line-clamp: 5;
+}

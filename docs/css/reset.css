@@ -1,0 +1,14 @@
+html, body, #__nuxt {
+  margin: 0;
+  height: 100%;
+}
+
+#__layout {
+  width: 1356px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+div {
+  box-sizing: border-box;
+}
