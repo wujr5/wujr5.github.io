@@ -6,12 +6,17 @@ div
       v-for="item, index in aColorGroup"
       :key="`color-${index}`"
     )
-      .w-115.h-40(:style="`background-color: ${item}`")
+      .h-0.w-100(:style="`border-top: 50px solid ${item}; border-right: 25px solid transparent; border-left: 25px solid transparent;`")
       .w-115.lh-24.t-c.fs-12 {{item}}
 </template>
 
 <script>
 export default {
+  head() {
+    return {
+      title: '色相轮',
+    }
+  },
   data() {
     return {
       aColor: []

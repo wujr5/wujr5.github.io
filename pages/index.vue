@@ -50,6 +50,11 @@
 import config from '@/assets/config'
 
 export default {
+  head() {
+    return {
+      title: '每日日程',
+    }
+  },
   data() {
     let dToday = new Date();
 

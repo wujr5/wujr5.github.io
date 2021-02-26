@@ -11,7 +11,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'wujr5.github.io',
+    title: '吴家荣 😆',
     htmlAttrs: {
       lang: 'en'
     },
