@@ -55,5 +55,6 @@ export default {
     title: '上午报纸',
   }, {
     title: '下午报纸',
-  }]
+  }],
+  sPageBaseTitle: ' | 吴家荣 😜'
 }
