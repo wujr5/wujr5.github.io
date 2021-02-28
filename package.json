@@ -7,7 +7,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "deploy": "npm run generate && git add -A && git commit -m $1 && git push origin master"
+    "deploy": "npm run generate && sh deploy.sh"
   },
   "dependencies": {
     "core-js": "3.8.3",
