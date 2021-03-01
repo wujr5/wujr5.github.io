@@ -2,6 +2,21 @@ export default {
   aTodoList: [{
     title: '猫和打扫'
   }, {
+    title: '检查日历',
+  }, {
+    title: '检查邮件',
+  }, {
+    title: '微信时政',
+  }, {
+    title: '微信看看',
+  }, {
+    title: '上午报纸',
+  }, {
+    title: '下午报纸',
+  }, {
+    title: '知乎热榜',
+    link: 'https://www.zhihu.com/hot'
+  }, {
     title: '特别关注',
     link: 'https://weibo.com/mygroups?gid=3921172360211603&wvr=6&leftnav=1&isspecialgroup=1'
   }, {
@@ -19,13 +34,6 @@ export default {
   }, {
     title: '检查代理',
     link: 'https://azi.azzico.xyz/user#'
-  }, {
-    title: '检查日历',
-  }, {
-    title: '检查邮件',
-  }, {
-    title: '知乎热榜',
-    link: 'https://www.zhihu.com/hot'
   }, {
     title: '8 点 1 氪',
     link: 'https://36kr.com/search/articles/8%E7%82%B91%E6%B0%AA%209%E7%82%B91%E6%B0%AA'
@@ -47,14 +55,6 @@ export default {
   }, {
     title: 'Github趋势',
     link: 'https://github.com/trending'
-  }, {
-    title: '微信时政',
-  }, {
-    title: '微信看看',
-  }, {
-    title: '上午报纸',
-  }, {
-    title: '下午报纸',
   }],
   sPageBaseTitle: ' | 吴家荣 😜'
 }

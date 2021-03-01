@@ -2,18 +2,15 @@
   .p-20
     h2 {{`${nYear}年${nMonth}月${nDate}日，星期${sWeekDay[nDay]}`}}
 
-    nuxt-link.inbl.mt-10(to="/color") 色相轮
+    .my-20
+      .todo-item.inbl.vtal-top.w-178.h-60.lh-60.bd-1.t-c.mr-10.mb-10.br-4.pst-rlt(
+        v-for="todo, index in aTodoList" :key="`todo-${index}`"
+        :style="todo.bCheck ? 'background-color: #ddd' : ''"
+      )
+        a(v-if="todo.link" :href="`${todo.link}?t=${sTimeStamp}`" target="_blank" style="text-decoration: none; color: blue") {{todo.title}}
+        span(v-else) {{todo.title}}
 
-    .my-20.bd-1.br-4.py-30.px-10
-      .inbl.h-24.lh-24.mr-10.mb-10(v-for="todo, index in aTodoList" :key="`todo-${index}`")
-        label.inbl.vtal-top.w-200.t-r.mr-5(:for="`todo-${index}`" style='cursor: pointer;')
-          a(
-            v-if="todo.link"
-            :href="`${todo.link}?t=${sTimeStamp}`"
-            target='_blank'
-          ) {{todo.title}}
-          span(v-else) {{todo.title}}
-        input.inbl.mt-6(:id="`todo-${index}`" type='checkbox' style='cursor: pointer;')
+        .check-item.pst-absl.lh-16.fs-12.r-5.b-0.cs-pt(style="color: #bbb;" @click="todo.bCheck = !todo.bCheck") {{todo.bCheck ? 'Uncheck' : 'Check'}}
 
     h3.mb-10 新京报
     p#bjnews-a
@@ -46,6 +43,15 @@
       button(style='margin-right: 10px;cursor: pointer;' @click="openMultiTabs('yangcheng-daily')") 打开
 </template>
 
+<style>
+.todo-item .check-item {
+  opacity: 0;
+}
+.todo-item:hover .check-item {
+  opacity: 1;
+}
+</style>
+
 <script>
 import config from '@/assets/config'
 
@@ -57,6 +63,10 @@ export default {
   },
   data() {
     let dToday = new Date();
+
+    config.aTodoList.forEach(item => {
+      item.bCheck = false;
+    });
 
     return {
       nYear: dToday.getFullYear(),
