@@ -14,28 +14,28 @@ export default {
   }, {
     title: '下午报纸',
   }, {
-    title: '知乎热榜',
-    link: 'https://www.zhihu.com/hot'
+    title: '检查代理',
+    link: 'https://azi.azzico.xyz/user#'
   }, {
-    title: '特别关注',
-    link: 'https://weibo.com/mygroups?gid=3921172360211603&wvr=6&leftnav=1&isspecialgroup=1'
+    title: '今天天气',
+    link: 'http://forecast.weather.com.cn/town/weather1dn/101010700002.shtml'
   }, {
     title: '微博热搜',
     link: 'https://s.weibo.com/top/summary?cate=realtimehot'
   }, {
-    title: 'B 站时政',
+    title: '特别关注',
+    link: 'https://weibo.com/mygroups?gid=3921172360211603&wvr=6&leftnav=1&isspecialgroup=1'
+  }, {
+    title: '知乎热榜',
+    link: 'https://www.zhihu.com/hot'
+  }, {
+    title: 'B站时政',
     link: 'https://t.bilibili.com/'
   }, {
     title: '油管时政',
     link: 'https://www.youtube.com/feed/subscriptions'
   }, {
-    title: '今天天气',
-    link: 'http://forecast.weather.com.cn/town/weather1dn/101010700002.shtml'
-  }, {
-    title: '检查代理',
-    link: 'https://azi.azzico.xyz/user#'
-  }, {
-    title: '8 点 1 氪',
+    title: '8点1氪',
     link: 'https://36kr.com/search/articles/8%E7%82%B91%E6%B0%AA%209%E7%82%B91%E6%B0%AA'
   }, {
     title: '科创电报',
