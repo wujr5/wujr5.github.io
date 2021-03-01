@@ -79,7 +79,7 @@ export default {
      * @param end {number} 可选，结束序号
      */
     openMultiTabs(id, start, end) {
-        domTarget = document.getElementById(id).querySelectorAll('a');
+      let domTarget = document.getElementById(id).querySelectorAll('a');
       for (let i = start || 0; i < (end || domTarget.length); i++) {
         let url = domTarget[i].getAttribute('href');
         window.open(url);

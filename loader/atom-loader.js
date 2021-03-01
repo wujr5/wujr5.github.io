@@ -75,7 +75,7 @@ const oMobileClassNameMap = {
   '.br': 'border-radius:$px',
   '.bgs': 'background-size:$px',
   // border
-  '.bd': 'border: $px solid'
+  '.bd': 'border: $px solid #e1e5ee'
 };
 
 module.exports = function(sSource) {

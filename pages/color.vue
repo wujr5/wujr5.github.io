@@ -1,8 +1,6 @@
 <template lang="pug">
 div
-  h1.h-80.lh-80.t-c 色相轮
-
-  .h-1350.w-1350.bg-text.vh-parent
+  .h-1356.w-1356.vh-parent
     .vh.w-10.h-10.bg-black.br-50(style="z-index: 100")
     div.bg-yellow(v-for="aColorGroup, nHueIndex in aColor" :key="`color-group-${nHueIndex}`")
       span.inbl.vtal-top.pst-absl(
@@ -36,7 +34,7 @@ export default {
   },
   data() {
     // 色相轮直径
-    let nDiameter = 1350;
+    let nDiameter = 1356;
 
     return {
       aColor: [[]], // 颜色数组
