@@ -1,20 +1,17 @@
-# wujr5.github.io
+# 水调歌头·重上井冈山
 
-## Build Setup
+久有凌云志，重上井冈山
 
-```bash
-# install dependencies
-$ npm install
+千里来寻故地，旧貌变新颜
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+到处莺歌燕舞，更有潺潺流水，高路入云端
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+过了黄洋界，险处不须看
 
-# generate static project
-$ npm run generate
-```
+风雷动，旌旗奋，是人寰
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+三十八年过去，弹指一挥间
+
+可上九天揽月，可下五洋捉鳖，谈笑凯歌还
+
+世上无难事，只要肯登攀
