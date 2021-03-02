@@ -1,12 +1,12 @@
 <template lang="pug">
 div
-  .h-60(style="background-color: hsl(180, 100%, 40%)")
+  .h-50(style="background-color: hsl(180, 100%, 40%)")
     .layout-default.t-r
-      nuxt-link.inbl.vtal-top.h-60.lh-60.w-150.t-c.c-white(
+      nuxt-link.inbl.vtal-top.h-50.lh-50.w-130.t-c.c-white(
         to="/"
         :style="`background-color: hsl(180, ${$route.path == '/' ? '50%' : '100%'}, 40%); text-decoration: none`"
-      ) 首页
-      nuxt-link.inbl.vtal-top.h-60.lh-60.w-150.t-c.c-white(
+      ) 日程
+      nuxt-link.inbl.vtal-top.h-50.lh-50.w-130.t-c.c-white(
         to="/color"
         :style="`background-color: hsl(180, ${$route.path == '/color' ? '50%' : '100%'}, 40%); text-decoration: none`"
       ) 色相轮

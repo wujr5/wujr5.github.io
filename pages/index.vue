@@ -58,7 +58,7 @@ import config from '@/assets/config'
 export default {
   head() {
     return {
-      title: '每日日程' + config.sPageBaseTitle,
+      title: '日程' + config.sPageBaseTitle,
     }
   },
   data() {
