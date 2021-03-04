@@ -54,11 +54,13 @@ const oMobileClassNameMap = {
   // width
   '.w': 'width:$px;',
   '.wi': 'width:$px !important;',
+  '.mw': 'min-width:$px;',
   '.wp': 'width:$%;',
   '.wpi': 'width:$% !important;',
   // height
   '.h': 'height:$px;',
   '.hi': 'height:$px !important;',
+  '.mh': 'min-height:$px;',
   '.hp': 'height:$%;',
   '.hpi': 'height:$% !important;',
   // 四方向
@@ -93,7 +95,7 @@ module.exports = function(sSource) {
   // 获取 pc 端原子类类名数组，并剔除重复的类名
   let aMobileClassName = uniq(
     sPugString.match(
-      /\.(m|ml|mr|mt|mb|mx|my)-[0-9]+|\.(mi|mli|mri|mti|mbi|mxi|myi)-[0-9]+|\.(p|pl|pr|pt|pb|px|py)-[0-9]+|\.(pi|pli|pri|pti|pbi|pxi|pyi)-[0-9]+|\.(w|wi|wp|wpi)-[0-9]+|\.(h|hi|hp|hpi)-[0-9]+|\.(l|r|t|b)-[0-9]+|\.lh-[0-9]+|\.(fs|fw)-[0-9]+|\.br-[0-9]+|\.(bgs)-[0-9]+|\.(bd)-[0-9]+/g
+      /\.(m|ml|mr|mt|mb|mx|my)-[0-9]+|\.(mi|mli|mri|mti|mbi|mxi|myi)-[0-9]+|\.(p|pl|pr|pt|pb|px|py)-[0-9]+|\.(pi|pli|pri|pti|pbi|pxi|pyi)-[0-9]+|\.(w|wi|mw|wp|wpi)-[0-9]+|\.(h|hi|mh|hp|hpi)-[0-9]+|\.(l|r|t|b)-[0-9]+|\.lh-[0-9]+|\.(fs|fw)-[0-9]+|\.br-[0-9]+|\.(bgs)-[0-9]+|\.(bd)-[0-9]+/g
     )
   );
 

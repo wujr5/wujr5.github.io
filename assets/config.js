@@ -57,5 +57,5 @@ export default {
     link: 'https://github.com/trending'
   }],
   sPageBaseTitle: ' | 吴家荣 😜',
-  sServerHost: 'http://handan.wanweitech.xyz:50501'
+  sServerHost: 'https://handan.wanweitech.xyz:50501'
 }

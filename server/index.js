@@ -1,8 +1,16 @@
 const express = require('express')
 const { createProxyMiddleware } = require('http-proxy-middleware');
+const fs = require('fs');
+const https = require('https')
 
-const app = express()
 const port = 50501
+
+const httpsOption = {
+  key : fs.readFileSync(__dirname + '/ssl/5267232_handan.wanweitech.xyz.key'),
+  cert: fs.readFileSync(__dirname + '/ssl/5267232_handan.wanweitech.xyz.pem')
+}
+
+const app = express();
 
 // 新京报，报纸阅读转发
 app.use('/ipaper', createProxyMiddleware({
@@ -14,6 +22,8 @@ app.use('/ipaper', createProxyMiddleware({
   }
 }));
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+https
+  .createServer(httpsOption, app)
+  .listen(port, () => {
+    console.log('服务监听端口：', port)
+  })

@@ -1,6 +1,6 @@
 <template lang="pug">
-div(:style="`width: ${nTotalWidth}px; height: 800px`")
-  canvas.inbl.vtal-top.bd-1.mr-5.mb-5(
+div.bg-white.pl-5(:style="`width: ${nTotalWidth}px;`")
+  canvas.inbl.vtal-top.bd-1.mr-5.mb-5.h-920.mw-650.bg-loading.bgs-60(
     v-for="item, index in data"
     :ref="`bjnews-canvas-${index}`"
     :key="`bjnews-canvas-${index}`"
@@ -36,7 +36,7 @@ export default {
               canvas.width = viewport.width;
               canvas.height = viewport.height;
 
-              this.nTotalWidth = this.nTotalWidth + viewport.width + 12;
+              this.nTotalWidth = this.nTotalWidth + viewport.width + 7;
 
               let ctx = canvas.getContext("2d");
 
