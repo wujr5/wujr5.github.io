@@ -1,10 +1,10 @@
 <template lang="pug">
 div.bg-white.pl-5(:style="`width: ${nTotalWidth}px;`")
-  canvas.inbl.vtal-top.bd-1.mr-5.mb-5.h-920.mw-650.bg-loading.bgs-60(
-    v-for="item, index in data"
-    :ref="`bjnews-canvas-${index}`"
-    :key="`bjnews-canvas-${index}`"
-  )
+  .inbl.vtal-top.pst-rlt(v-for="item, index in data"  :key="`bjnews-canvas-${index}`")
+    canvas.bd-1.mr-5.mb-5.h-920.mw-650.bg-loading.bgs-60(
+      :ref="`bjnews-canvas-${index}`"
+    )
+    a.pst-absl.r-5.t-0.w-50.h-20.bd-1.br-3.lh-20.bg-white.fs-12.t-c(:href="item.url" target="_blank") 详情
 </template>
 
 <script>
