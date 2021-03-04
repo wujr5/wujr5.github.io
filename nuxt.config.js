@@ -11,7 +11,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: '吴家荣 😆',
+    title: '吴家荣 😜',
     htmlAttrs: {
       lang: 'en'
     },
@@ -21,7 +21,7 @@ export default {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/wu.png' },
       { rel: 'stylesheet', href: '/css/reset.css' },
       { rel: 'stylesheet', href: '/css/atom.css' },
       { rel: 'stylesheet', href: '/css/atom-common.css' },
