@@ -56,5 +56,6 @@ export default {
     title: 'Github趋势',
     link: 'https://github.com/trending'
   }],
-  sPageBaseTitle: ' | 每天都很烦人的计算机同学 😜'
+  sPageBaseTitle: ' | 吴家荣 😜',
+  sServerHost: 'http://handan.wanweitech.xyz:50501'
 }
