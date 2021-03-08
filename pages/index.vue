@@ -15,7 +15,13 @@
     h2.mb-10 新京报
 
     .h-940.wp-100.ovfl-x-scroll.ovfl-y-hd.bd-1.bgs-80.bg-text.pt-5
-      pdf2img(:data="aBJnews" v-if="aBJnews.length")
+      pdf2img(:data="aBJnews" name="bjnews" v-if="aBJnews.length")
+
+    h2.my-10 人民日报
+
+    .h-940.wp-100.ovfl-x-scroll.ovfl-y-hd.bd-1.bgs-80.bg-text.pt-5
+      pdf2img(:data="aRMDailyNews" name="rmrb" v-if="aRMDailyNews.length")
+
 </template>
 
 <style>
@@ -55,7 +61,8 @@ export default {
       sDateStr: `${dToday.getFullYear()}年${dToday.getMonth() + 1}月${dToday.getDate()}日，星期${sWeekDay[dToday.getDay()]}`,
       sTimeStamp: `${dToday.getFullYear()}${dToday.getMonth() + 1}${dToday.getDate()}`,
       aTodoList: config.aTodoList,
-      aBJnews: []
+      aBJnews: [],
+      aRMDailyNews: [],
     }
   },
   methods: {
@@ -84,7 +91,8 @@ export default {
           sCount = `${j >= 9 ? '' : '0'}${j + 1}`
           aBJnews.push({
             url: `${config.sServerHost}/ipaper/data/${dToday.getFullYear()}-${sMonth}/${sDate}/${aBJnewsInfo[i].index}${sCount}/xjb${dToday.getFullYear()}${sMonth}${sDate}${aBJnewsInfo[i].index}${sCount}.pdf`,
-            title: `${aBJnewsInfo[i].index}${(j + 1)}版`
+            title: `${aBJnewsInfo[i].index}${(j + 1)}版`,
+            bShow: false
           })
         }
       }
@@ -106,10 +114,42 @@ export default {
         .then((res) => {
           this.aBJnews = res.filter(i => i);
         })
+    },
+    // 获取人民日报数据
+    getRMDailyNewsData() {
+      let aNews = [], dToday = new Date();
+      let sMonth = `${dToday.getMonth() > 9 ? '' : '0'}${dToday.getMonth()}`;
+      let sDate = `${dToday.getDate() > 9 ? '' : '0'}${dToday.getDate()}`;
+      for (let i = 0; i < 20; i++) {
+        let sCount = `${i >= 9 ? '' : '0'}${i + 1}`
+        aNews.push({
+          url: `${config.sServerHost}/rmrb/images/${dToday.getFullYear()}-${sMonth}/${sDate}/${sCount}/rmrb${dToday.getFullYear()}${sMonth}${sDate}${sCount}.pdf`,
+          bShow: false
+        });
+      }
+
+      let aPromise = aNews.map((item) => {
+        return new Promise((resolve, reject) => {
+          axios
+            .head(item.url)
+            .then(() => {
+              resolve(item)
+            })
+            .catch(() => {
+              resolve()
+            })
+        })
+      })
+
+      Promise.all(aPromise)
+        .then((res) => {
+          this.aRMDailyNews = res.filter(i => i);
+        })
     }
   },
   mounted() {
     this.getBJnewsData();
+    this.getRMDailyNewsData();
   }
 }
 

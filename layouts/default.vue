@@ -13,6 +13,8 @@ div
 
   Nuxt.layout-default
 
+  .pst-fx.w-65.h-65.lh-65.br-65.t-c.bd-1.b-160.r-50.fs-14.cs-pt.c-gray(@click="fixedPage") {{bFixedPage ? '允许' : '禁止'}}滚动
+
   .h-150(style="background-color: hsl(0, 0%, 95%)")
     .layout-default
       .h-98.lh-98.t-c.fs-36 雄关漫道真如铁，而今迈步从头越
@@ -33,7 +35,14 @@ div
 export default {
   data() {
     return {
-      year: new Date().getFullYear()
+      year: new Date().getFullYear(),
+      bFixedPage: false,
+    }
+  },
+  methods: {
+    fixedPage() {
+      document.getElementsByTagName('html')[0].style['overflow-y'] = this.bFixedPage ? 'scroll' : 'hidden';
+      this.bFixedPage = !this.bFixedPage;
     }
   }
 }

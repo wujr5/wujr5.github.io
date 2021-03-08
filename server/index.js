@@ -22,6 +22,16 @@ app.use('/ipaper', createProxyMiddleware({
   }
 }));
 
+// 人民日报，报纸阅读转发
+app.use('/rmrb', createProxyMiddleware({
+  target: 'http://paper.people.com.cn/',
+  changeOrigin: true,
+  onProxyRes: function (proxyRes, req, res) {
+    proxyRes.headers['Access-Control-Allow-Origin'] = '*';
+    proxyRes.headers['Access-Control-Allow-Credentials'] = 'true';
+  }
+}));
+
 https
   .createServer(httpsOption, app)
   .listen(port, () => {
