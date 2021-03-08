@@ -14,7 +14,7 @@
 
     h2.mb-10 新京报
 
-    .h-940.wp-100.ovfl-x-scroll.ovfl-y-hd.bg-loading.bd-1.bgs-80.bg-text.pt-5
+    .h-940.wp-100.ovfl-x-scroll.ovfl-y-hd.bd-1.bgs-80.bg-text.pt-5
       pdf2img(:data="aBJnews" v-if="aBJnews.length")
 </template>
 
