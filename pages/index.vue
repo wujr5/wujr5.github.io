@@ -63,7 +63,7 @@ export default {
     getBJnewsData() {
       let aBJnewsInfo = [{
         index: 'A',
-        num: 16
+        num: 20
       }, {
         index: 'B',
         num: 8

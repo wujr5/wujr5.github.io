@@ -22,7 +22,7 @@
     "axios": "0.21.1",
     "glob-all": "3.2.1",
     "lodash": "4.17.21",
-    "promise": "^7.3.1",
+    "promise": "7.3.1",
     "pug-plain-loader": "1.1.0",
     "purgecss-webpack-plugin": "4.0.2",
     "worker-loader": "3.0.8"
