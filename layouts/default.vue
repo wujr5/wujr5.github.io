@@ -11,9 +11,9 @@ div
         :style="`background-color: hsl(180, ${$route.path == '/color' ? '50%' : '100%'}, 40%); text-decoration: none`"
       ) 色相轮
 
-  Nuxt.layout-default
+  Nuxt.layout-default.bg-white
 
-  .pst-fx.w-65.h-65.lh-65.br-65.t-c.bd-1.b-160.r-50.fs-14.cs-pt.c-gray(@click="fixedPage") {{bFixedPage ? '允许' : '禁止'}}滚动
+  .pst-fx.w-65.h-65.lh-65.br-65.t-c.bd-1.b-160.r-50.fs-14.cs-pt.c-gray.bg-white(@click="fixedPage") {{bFixedPage ? '允许' : '禁止'}}滚动
 
   .h-150(style="background-color: hsl(0, 0%, 95%)")
     .layout-default
@@ -42,6 +42,7 @@ export default {
   methods: {
     fixedPage() {
       document.getElementsByTagName('html')[0].style['overflow-y'] = this.bFixedPage ? 'scroll' : 'hidden';
+      document.getElementById('__layout').style.backgroundColor = this.bFixedPage ? '#fff' : '#222';
       this.bFixedPage = !this.bFixedPage;
     }
   }

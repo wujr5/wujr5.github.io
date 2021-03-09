@@ -4,7 +4,7 @@ div.bg-white.pl-5.pst-rlt(:style="`width: ${nTotalWidth}px;`")
     canvas.bd-1.mr-5.mb-5.bg-loading.bgs-60(:ref="`${name}-canvas-${index}`")
     a.pst-absl.r-5.t-0.w-50.h-20.bd-1.br-3.lh-20.bg-white.fs-12.t-c(:href="item.url" target="_blank") 详情
 
-  .pst-absl.h-30.lh-30.fs-14.w-60.bg-white.r-0.b-0.t-c.cs-pt.c-gray.bd-1.br-4(v-if="bShowRenderRest" @click="renderNextPDF") 下一页
+  .pst-absl.h-30.lh-30.fs-14.w-60.bg-white.r-0.b-0.t-c.cs-pt.bd-1.br-4.c-blue(v-if="bShowRenderRest" @click="renderNextPDF") 下一页
 </template>
 
 <script>
