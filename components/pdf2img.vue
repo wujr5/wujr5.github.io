@@ -45,7 +45,7 @@ export default {
               canvas.width = viewport.width;
               canvas.height = viewport.height;
 
-              this.nTotalWidth = this.nTotalWidth + viewport.width + 10;
+              this.nTotalWidth = this.nTotalWidth + viewport.width + 30;
 
               let ctx = canvas.getContext("2d");
 
