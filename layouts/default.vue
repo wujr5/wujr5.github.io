@@ -1,7 +1,9 @@
 <template lang="pug">
 div
   .h-50(style="background-color: hsl(180, 100%, 40%)")
-    .layout-default.t-r
+    .layout-default.t-r.pl-10
+      .inbl.vtal-top.h-50.w-50.fl-l.vh-parent
+        img.w-80.h-80.pst-absl.l-10.t-5(src="/wu.png")
       nuxt-link.inbl.vtal-top.h-50.lh-50.w-130.t-c.c-white(
         to="/"
         :style="`background-color: hsl(180, ${$route.path == '/' ? '50%' : '100%'}, 40%); text-decoration: none`"

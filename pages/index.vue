@@ -1,5 +1,5 @@
 <template lang="pug">
-  .p-20
+  .p-20.pt-40
     h2 {{sDateStr}}
 
     .my-20
