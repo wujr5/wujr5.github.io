@@ -1,10 +1,11 @@
 <template lang="pug">
-div.bg-white.pl-5.pst-rlt(:style="`width: ${nTotalWidth}px;`")
-  .inbl.vtal-top.pst-rlt.h-920.ovfl-y-scroll(v-for="item, index in data" :key="`${name}-canvas-${index}`" v-show="item.bShow")
-    canvas.bd-1.mr-5.mb-5.bg-loading.bgs-60(:ref="`${name}-canvas-${index}`")
-    a.pst-absl.r-5.t-0.w-50.h-20.bd-1.br-3.lh-20.bg-white.fs-12.t-c(:href="item.url" target="_blank") 详情
+.h-940.wp-100.ovfl-x-scroll.ovfl-y-hd.bd-1.bgs-80.bg-text.pt-5(ref="pdf-container")
+  div.bg-white.pl-5.pst-rlt(:style="`width: ${nTotalWidth}px;`")
+    .inbl.vtal-top.pst-rlt.h-920.ovfl-y-scroll.mr-5.mb-5(v-for="item, index in data" :key="`${name}-canvas-${index}`" v-show="item.bShow")
+      canvas.bd-1.bg-loading.bgs-60(:ref="`${name}-canvas-${index}`")
+      a.pst-absl.r-5.t-0.w-50.h-20.bd-1.br-3.lh-20.bg-white.fs-12.t-c(:href="item.url" target="_blank") 详情
 
-  .pst-absl.h-30.lh-30.fs-14.w-60.bg-white.r-0.b-0.t-c.cs-pt.bd-1.br-4.c-blue(v-if="bShowRenderRest" @click="renderNextPDF") 下一页
+    .pst-absl.h-30.lh-30.fs-14.w-60.bg-white.r-0.b-0.t-c.cs-pt.bd-1.br-4.c-blue(v-if="bShowRenderRest" @click="renderNextPDF") 下一页
 </template>
 
 <script>
@@ -14,10 +15,11 @@ export default {
   props: {
     data: Array,
     name: String,
+    scale: Number,
   },
   data() {
     return {
-      nTotalWidth: 0,
+      nTotalWidth: 5,
       nCount: 0,
       bShowRenderRest: true,
     }
@@ -39,13 +41,13 @@ export default {
           return pdfDocument
             .getPage(1)
             .then((pdfPage) => {
-              let viewport = pdfPage.getViewport({ scale: 1.2 });
+              let viewport = pdfPage.getViewport({ scale: this.scale });
 
               let canvas = this.$refs[ref][0]
               canvas.width = viewport.width;
               canvas.height = viewport.height;
 
-              this.nTotalWidth = this.nTotalWidth + viewport.width + 30;
+              this.nTotalWidth = this.nTotalWidth + viewport.width + 10;
 
               let ctx = canvas.getContext("2d");
 
@@ -54,7 +56,11 @@ export default {
                 viewport,
               })
 
-              return renderTask.promise;
+              return renderTask
+                .promise
+                .then(() => {
+                  this.$refs['pdf-container'].scrollLeft = this.nTotalWidth;
+                });
             })
         })
         .catch((reason) => {
