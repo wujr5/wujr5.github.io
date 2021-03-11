@@ -14,12 +14,12 @@
 
     h2.mb-10 新京报
 
-    pdf2img(:data="aBJnews" name="bjnews" :scale="1.5" v-if="aBJnews.length")
+    pdf2img(:data="aBJnews" name="bjnews" :scale="1.8" v-if="aBJnews.length")
     .h-920.bg-text(v-else)
 
     h2.my-10 人民日报
 
-    pdf2img(:data="aRMDailyNews" name="rmrb" :scale="1.4" v-if="aRMDailyNews.length")
+    pdf2img(:data="aRMDailyNews" name="rmrb" :scale="1.8" v-if="aRMDailyNews.length")
     .h-920.bg-text(v-else)
 
 </template>
