@@ -1,4 +1,5 @@
 export default {
+  sVersion: '2021.0311.0',
   aTodoList: [{
     title: '猫和打扫'
   }, {

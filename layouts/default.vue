@@ -23,6 +23,7 @@ div
       .h-12.lh-12.fs-12.t-r.pr-350(style="color: #999") —— 毛泽东·《忆秦娥·娄山关》
       .h-40.lh-40.fs-14.t-c(style="color: #aaa") Copyright @ wujr5.cn, {{year}},
         a.ml-8(href="https://github.com/wujr5/wujr5.github.io" target="_blank" style="text-decoration: none; color: #aaa") github.com/wujr5/wujr5.github.io
+        span.ml-5 {{sVersion}}
 </template>
 
 <style>
@@ -34,11 +35,14 @@ div
 </style>
 
 <script>
+import config from '@/assets/config'
+
 export default {
   data() {
     return {
       year: new Date().getFullYear(),
       bFixedPage: false,
+      sVersion: config.sVersion
     }
   },
   methods: {
