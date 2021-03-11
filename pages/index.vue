@@ -118,7 +118,7 @@ export default {
     // 获取人民日报数据
     getRMDailyNewsData() {
       let aNews = [], dToday = new Date();
-      let sMonth = `${dToday.getMonth() > 9 ? '' : '0'}${dToday.getMonth()}`;
+      let sMonth = `${dToday.getMonth() + 1 > 9 ? '' : '0'}${dToday.getMonth() + 1}`;
       let sDate = `${dToday.getDate() > 9 ? '' : '0'}${dToday.getDate()}`;
       for (let i = 0; i < 20; i++) {
         let sCount = `${i >= 9 ? '' : '0'}${i + 1}`
