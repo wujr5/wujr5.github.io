@@ -12,6 +12,10 @@ div
         to="/color"
         :style="`background-color: hsl(180, ${$route.path == '/color' ? '50%' : '100%'}, 40%); text-decoration: none`"
       ) 色相轮
+      nuxt-link.inbl.vtal-top.h-50.lh-50.w-130.t-c.c-white(
+        to="/strategy"
+        :style="`background-color: hsl(180, ${$route.path == '/strategy' ? '50%' : '100%'}, 40%); text-decoration: none`"
+      ) 策略
 
   Nuxt.layout-default.bg-white
 
