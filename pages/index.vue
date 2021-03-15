@@ -22,6 +22,11 @@
     pdf2img(:data="aRMDailyNews" name="rmrb" :scale="1.8" v-if="aRMDailyNews.length")
     .h-920.bg-text(v-else)
 
+    h2.mb-10 经济日报
+
+    pdf2img(:data="aEconomiyDaily" name="bjnews" :scale="1.8" v-if="aEconomiyDaily.length")
+    .h-920.bg-text(v-else)
+
 </template>
 
 <style>
@@ -63,6 +68,7 @@ export default {
       aTodoList: config.aTodoList,
       aBJnews: [],
       aRMDailyNews: [],
+      aEconomiyDaily: [],
     }
   },
   methods: {
@@ -145,11 +151,44 @@ export default {
         .then((res) => {
           this.aRMDailyNews = res.filter(i => i);
         })
+    },
+    // 获取经济日报数据
+    getEconomyDailyNewsData() {
+      let aNews = [], dToday = new Date();
+      let sMonth = `${dToday.getMonth() + 1 > 9 ? '' : '0'}${dToday.getMonth() + 1}`;
+      let sDate = `${dToday.getDate() > 9 ? '' : '0'}${dToday.getDate()}`;
+
+      for (let i = 0; i < 20; i++) {
+        let sCount = `${i >= 9 ? '' : '0'}${i + 1}`;
+        aNews.push({
+          url: `${config.sServerHost}/jjrb/page/1/${dToday.getFullYear()}-${sMonth}/${sDate}/${sCount}/${dToday.getFullYear()}${sMonth}${sDate}${sCount}_pdf.pdf`,
+          bShow: false
+        });
+      }
+
+      let aPromise = aNews.map((item) => {
+        return new Promise((resolve, reject) => {
+          axios
+            .head(item.url)
+            .then(() => {
+              resolve(item)
+            })
+            .catch(() => {
+              resolve()
+            })
+        })
+      })
+
+      Promise.all(aPromise)
+        .then((res) => {
+          this.aEconomiyDaily = res.filter(i => i);
+        })
     }
   },
   mounted() {
     this.getBJnewsData();
     this.getRMDailyNewsData();
+    this.getEconomyDailyNewsData();
   }
 }
 
@@ -161,41 +200,6 @@ export default {
 
 // let sMonth = `${nMonth > 9 ? '' : '0'}${nMonth}`; // 月份（用来显示）
 // let sDate = `${nDate > 9 ? '' : '0'}${nDate}`; // 日期（用来显示）
-
-// /**
-//  * 人民日报
-//  */
-// function setPeopleDaily() {
-//   let domPeopleDaily = document.getElementById('people-daily');
-//   let nPeopleDailyPageLength = (nDay === 0 || nDay === 6) ? 8 : 20;
-
-//   for (let i = 0; i < nPeopleDailyPageLength; i++) {
-//     let aLink = document.createElement('a');
-//     let sCount = `${i >= 9 ? '' : '0'}${i + 1}`
-//     aLink.style = 'display: inline-block; margin-right: 10px; margin-bottom: 10px;';
-//     aLink.setAttribute('target', '_blank');
-//     aLink.setAttribute('href', `http://paper.people.com.cn/rmrb/images/${nYear}-${sMonth}/${sDate}/${sCount}/rmrb${nYear}${sMonth}${sDate}${sCount}.pdf`);
-//     aLink.innerText = i + 1 + '版';
-//     domPeopleDaily.appendChild(aLink);
-//   }
-// }
-
-// /**
-//  * 经济日报
-//  */
-// function setEconomicDaily() {
-//   let domEconomicDaily = document.getElementById('economic-daily');
-
-//   for (let i = 0; i < 12; i++) {
-//     let aLink = document.createElement('a');
-//     let sCount = `${i >= 9 ? '' : '0'}${i + 1}`
-//     aLink.style = 'display: inline-block; margin-right: 10px; margin-bottom: 10px;';
-//     aLink.setAttribute('target', '_blank');
-//     aLink.setAttribute('href', `http://paper.ce.cn/jjrb/page/1/${nYear}-${sMonth}/${sDate}/${sCount}/${nYear}${sMonth}${sDate}${sCount}_pdf.pdf`);
-//     aLink.innerText = i + 1 + '版';
-//     domEconomicDaily.appendChild(aLink);
-//   }
-// }
 
 // /**
 //  * 羊城晚报

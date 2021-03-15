@@ -32,6 +32,16 @@ app.use('/rmrb', createProxyMiddleware({
   }
 }));
 
+// 经济日报，报纸阅读转发
+app.use('/jjrb', createProxyMiddleware({
+  target: 'http://paper.ce.cn/',
+  changeOrigin: true,
+  onProxyRes: function (proxyRes, req, res) {
+    proxyRes.headers['Access-Control-Allow-Origin'] = '*';
+    proxyRes.headers['Access-Control-Allow-Credentials'] = 'true';
+  }
+}));
+
 https
   .createServer(httpsOption, app)
   .listen(port, () => {
