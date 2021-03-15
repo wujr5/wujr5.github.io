@@ -42,6 +42,18 @@ app.use('/jjrb', createProxyMiddleware({
   }
 }));
 
+// 羊城晚报，报纸阅读转发
+app.use('/epaper', createProxyMiddleware({
+  target: 'http://ep.ycwb.com/',
+  changeOrigin: true,
+  onProxyRes: function (proxyRes, req, res) {
+    proxyRes.headers['Access-Control-Allow-Origin'] = '*';
+    proxyRes.headers['Access-Control-Allow-Credentials'] = 'true';
+  }
+}));
+
+
+
 https
   .createServer(httpsOption, app)
   .listen(port, () => {

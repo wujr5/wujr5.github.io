@@ -24,7 +24,12 @@
 
     h2.mb-10 经济日报
 
-    pdf2img(:data="aEconomiyDaily" name="bjnews" :scale="1.8" v-if="aEconomiyDaily.length")
+    pdf2img(:data="aEconomyDaily" name="economy" :scale="1.8" v-if="aEconomyDaily.length")
+    .h-920.bg-text(v-else)
+
+    h2.mb-10 羊城晚报
+
+    pdf2img(:data="aYangchengNews" name="yangcheng" :scale="1.8" v-if="aYangchengNews.length")
     .h-920.bg-text(v-else)
 
 </template>
@@ -68,7 +73,8 @@ export default {
       aTodoList: config.aTodoList,
       aBJnews: [],
       aRMDailyNews: [],
-      aEconomiyDaily: [],
+      aEconomyDaily: [],
+      aYangchengNews: []
     }
   },
   methods: {
@@ -181,14 +187,62 @@ export default {
 
       Promise.all(aPromise)
         .then((res) => {
-          this.aEconomiyDaily = res.filter(i => i);
+          this.aEconomyDaily = res.filter(i => i);
         })
-    }
+    },
+    // 获取羊城晚报数据
+    getYangchengData() {
+      let aNews = [];
+
+      let nLength = 16, sCount = 0, dToday = new Date();
+      let nMonth = dToday.getMonth() + 1;
+      let sMonth = `${nMonth > 9 ? '' : '0'}${nMonth}`;
+      let nDate = dToday.getDate();
+      let sDate = `${nDate > 9 ? '' : '0'}${nDate}`;
+      let nYear = dToday.getFullYear();
+
+      for (let i = 0; i < nLength; i++) {
+
+        sCount = `${i >= 9 ? '' : '0'}${i + 1}`
+
+        let url1 = `${config.sServerHost}/epaper/ycwb/resfile/${nYear}-${sMonth}-${sDate}/A${sCount}/ycwb${nYear}${sMonth}${sDate}A${sCount}.pdf`;
+        let url2 = `${config.sServerHost}/epaper/ycwb/resfile/${nYear}-${sMonth}-${sDate}/A${sCount}G/ycwb${nYear}${sMonth}${sDate}A${sCount}G.pdf`;
+
+        aNews.push({
+          url: url1,
+          bShow: false
+        });
+        aNews.push({
+          url: url2,
+          bShow: false
+        });
+
+      }
+
+      let aPromise = aNews.map((item) => {
+        return new Promise((resolve, reject) => {
+          axios
+            .head(item.url)
+            .then(() => {
+              resolve(item)
+            })
+            .catch(() => {
+              resolve()
+            })
+        })
+      })
+
+      Promise.all(aPromise)
+        .then((res) => {
+          this.aYangchengNews = res.filter(i => i);
+        })
+    },
   },
   mounted() {
     this.getBJnewsData();
     this.getRMDailyNewsData();
     this.getEconomyDailyNewsData();
+    this.getYangchengData();
   }
 }
 
