@@ -1,5 +1,6 @@
 export default {
-  sVersion: '2021.0315.1500',
+  sVersion: 'v2021.0315.1500',
+  sComment: '增加羊城晚报',
   aTodoList: [{
     title: '猫和打扫'
   }, {

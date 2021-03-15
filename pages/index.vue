@@ -245,45 +245,4 @@ export default {
     this.getYangchengData();
   }
 }
-
-// let dToday = new Date();
-// let nYear = dToday.getFullYear(); // 年份
-// let nMonth = dToday.getMonth() + 1; // 月份
-// let nDate = dToday.getDate(); // 日期
-// let nDay = dToday.getDay(); // 星期
-
-// let sMonth = `${nMonth > 9 ? '' : '0'}${nMonth}`; // 月份（用来显示）
-// let sDate = `${nDate > 9 ? '' : '0'}${nDate}`; // 日期（用来显示）
-
-// /**
-//  * 羊城晚报
-//  */
-// function setYangchengDaily() {
-//   let domYangchengDaily = document.getElementById('yangcheng-daily');
-
-//   let nLength;
-//   if (nDay === 6 || nDay === 0) nLength = 8; // 周六、周日
-//   else nLength = 16; // 周一~周五
-
-//   for (let i = 0; i < nLength; i++) {
-//     let aLink01 = document.createElement('a');
-//     let aLink02 = document.createElement('a');
-
-//     let sCount = `${i >= 9 ? '' : '0'}${i + 1}`
-
-//     aLink01.style = 'display: inline-block; margin-right: 10px; margin-bottom: 10px;';
-//     aLink01.setAttribute('target', '_blank');
-//     aLink02.style = 'display: inline-block; margin-right: 10px; margin-bottom: 10px;';
-//     aLink02.setAttribute('target', '_blank');
-
-//     aLink01.setAttribute('href', `http://ep.ycwb.com/epaper/ycwb/resfile/${nYear}-${sMonth}-${sDate}/A${sCount}/ycwb${nYear}${sMonth}${sDate}A${sCount}.pdf`);
-//     aLink02.setAttribute('href', `http://ep.ycwb.com/epaper/ycwb/resfile/${nYear}-${sMonth}-${sDate}/A${sCount}G/ycwb${nYear}${sMonth}${sDate}A${sCount}G.pdf`);
-
-//     aLink01.innerText = i + 1 + '版';
-//     i > 9 && (aLink02.innerText = i + 1 + '版G');
-
-//     domYangchengDaily.appendChild(aLink01);
-//     i > 9 && domYangchengDaily.appendChild(aLink02);
-//   }
-// }
 </script>

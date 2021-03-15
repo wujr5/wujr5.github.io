@@ -23,11 +23,15 @@ div
 
   .h-150(style="background-color: hsl(0, 0%, 95%)")
     .layout-default
-      .h-98.lh-98.t-c.fs-36 雄关漫道真如铁，而今迈步从头越
+      .h-78.lh-78.t-c.fs-36 雄关漫道真如铁，而今迈步从头越
       .h-12.lh-12.fs-12.t-r.pr-350(style="color: #999") —— 毛泽东·《忆秦娥·娄山关》
-      .h-40.lh-40.fs-14.t-c(style="color: #aaa") Copyright @ wujr5.cn, {{year}},
+      .h-30.lh-30.fs-14.t-c(style="color: #aaa") Copyright @ wujr5.cn, {{year}},
         a.ml-8(href="https://github.com/wujr5/wujr5.github.io" target="_blank" style="text-decoration: none; color: #aaa") github.com/wujr5/wujr5.github.io
-        span.ml-5 {{sVersion}}
+
+      .h-30.lh-30.fs-14.t-c(style="color: #aaa")
+        span {{sVersion}}
+        span （{{sComment}}）
+
 </template>
 
 <style>
@@ -46,7 +50,8 @@ export default {
     return {
       year: new Date().getFullYear(),
       bFixedPage: false,
-      sVersion: config.sVersion
+      sVersion: config.sVersion,
+      sComment: config.sComment
     }
   },
   methods: {
