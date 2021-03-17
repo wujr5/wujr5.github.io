@@ -16,6 +16,7 @@ export default {
     data: Array,
     name: String,
     scale: Number,
+    gap: Number,
   },
   data() {
     return {
@@ -47,7 +48,7 @@ export default {
               canvas.width = viewport.width;
               canvas.height = viewport.height;
 
-              this.nTotalWidth = this.nTotalWidth + viewport.width + 10;
+              this.nTotalWidth = this.nTotalWidth + viewport.width + this.gap;
 
               let ctx = canvas.getContext("2d");
 

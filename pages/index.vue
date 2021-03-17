@@ -14,27 +14,27 @@
 
     h2.mb-10 新京报
 
-    pdf2img(:data="aBJnews" name="bjnews" :scale="1.8" v-if="aBJnews.length")
+    pdf2img(:data="aBJnews" name="bjnews" :scale="1.8" :gap="10" v-if="aBJnews.length")
     .h-920.bg-text(v-else)
 
     h2.my-10 人民日报
 
-    pdf2img(:data="aRMDailyNews" name="rmrb" :scale="1.8" v-if="aRMDailyNews.length")
+    pdf2img(:data="aRMDailyNews" name="rmrb" :scale="1.8" :gap="10" v-if="aRMDailyNews.length")
     .h-920.bg-text(v-else)
 
     h2.mb-10 经济日报
 
-    pdf2img(:data="aEconomyDaily" name="economy" :scale="1.8" v-if="aEconomyDaily.length")
+    pdf2img(:data="aEconomyDaily" name="economy" :scale="1.8" :gap="10" v-if="aEconomyDaily.length")
     .h-920.bg-text(v-else)
 
     h2.mb-10 中国环境报
 
-    pdf2img(:data="aEnvironmentNews" name="environment" :scale="1.8" v-if="aEnvironmentNews.length")
+    pdf2img(:data="aEnvironmentNews" name="environment" :scale="1.8" :gap="25" v-if="aEnvironmentNews.length")
     .h-920.bg-text(v-else)
 
     h2.mb-10 羊城晚报
 
-    pdf2img(:data="aYangchengNews" name="yangcheng" :scale="1.8" v-if="aYangchengNews.length")
+    pdf2img(:data="aYangchengNews" name="yangcheng" :scale="1.8" :gap="10" v-if="aYangchengNews.length")
     .h-920.bg-text(v-else)
 
 </template>

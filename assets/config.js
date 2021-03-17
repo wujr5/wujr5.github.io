@@ -1,6 +1,6 @@
 export default {
-  sVersion: 'v2021.0317.1700',
-  sComment: '增加记单词',
+  sVersion: 'v2021.0317.1800',
+  sComment: '优化展示',
   aTodoList: [{
     title: '猫和打扫'
   }, {
