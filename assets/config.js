@@ -1,6 +1,6 @@
 export default {
-  sVersion: 'v2021.0315.1500',
-  sComment: '增加羊城晚报',
+  sVersion: 'v2021.0317.1700',
+  sComment: '增加记单词',
   aTodoList: [{
     title: '猫和打扫'
   }, {
@@ -57,6 +57,9 @@ export default {
   }, {
     title: 'Github趋势',
     link: 'https://github.com/trending'
+  }, {
+    title: '记单词',
+    link: 'https://kaiyiwing.gitee.io/qwerty-learner/'
   }],
   sPageBaseTitle: ' | 吴家荣 😜',
   sServerHost: 'https://handan.wanweitech.xyz:50501'
