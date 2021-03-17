@@ -27,6 +27,11 @@
     pdf2img(:data="aEconomyDaily" name="economy" :scale="1.8" v-if="aEconomyDaily.length")
     .h-920.bg-text(v-else)
 
+    h2.mb-10 中国环境报
+
+    pdf2img(:data="aEnvironmentNews" name="environment" :scale="1.8" v-if="aEnvironmentNews.length")
+    .h-920.bg-text(v-else)
+
     h2.mb-10 羊城晚报
 
     pdf2img(:data="aYangchengNews" name="yangcheng" :scale="1.8" v-if="aYangchengNews.length")
@@ -74,7 +79,8 @@ export default {
       aBJnews: [],
       aRMDailyNews: [],
       aEconomyDaily: [],
-      aYangchengNews: []
+      aYangchengNews: [],
+      aEnvironmentNews: []
     }
   },
   methods: {
@@ -190,6 +196,39 @@ export default {
           this.aEconomyDaily = res.filter(i => i);
         })
     },
+    // 获取中国环境报数据
+    getEnvironmentNewsData() {
+      let aNews = [], dToday = new Date();
+      let sMonth = `${dToday.getMonth() + 1 > 9 ? '' : '0'}${dToday.getMonth() + 1}`;
+      let sDate = `${dToday.getDate() > 9 ? '' : '0'}${dToday.getDate()}`;
+
+      for (let i = 0; i < 8; i++) {
+        let sCount = `${i >= 9 ? '' : '0'}${i + 1}`;
+
+        aNews.push({
+          url: `${config.sServerHost}/html/1/${dToday.getFullYear()}-${sMonth}/${sDate}/${sCount}B/${dToday.getFullYear()}${sMonth}${sDate}${sCount}B_pdf.pdf`,
+          bShow: false
+        });
+      }
+
+      let aPromise = aNews.map((item) => {
+        return new Promise((resolve, reject) => {
+          axios
+            .head(item.url)
+            .then(() => {
+              resolve(item)
+            })
+            .catch(() => {
+              resolve()
+            })
+        })
+      })
+
+      Promise.all(aPromise)
+        .then((res) => {
+          this.aEnvironmentNews = res.filter(i => i);
+        })
+    },
     // 获取羊城晚报数据
     getYangchengData() {
       let aNews = [];
@@ -205,6 +244,7 @@ export default {
 
         sCount = `${i >= 9 ? '' : '0'}${i + 1}`
 
+        // 无法确定 G 后缀的规律，因此添加两个 url
         let url1 = `${config.sServerHost}/epaper/ycwb/resfile/${nYear}-${sMonth}-${sDate}/A${sCount}/ycwb${nYear}${sMonth}${sDate}A${sCount}.pdf`;
         let url2 = `${config.sServerHost}/epaper/ycwb/resfile/${nYear}-${sMonth}-${sDate}/A${sCount}G/ycwb${nYear}${sMonth}${sDate}A${sCount}G.pdf`;
 
@@ -212,7 +252,7 @@ export default {
           url: url1,
           bShow: false
         });
-        aNews.push({
+        i > 0 && aNews.push({
           url: url2,
           bShow: false
         });
@@ -243,6 +283,7 @@ export default {
     this.getRMDailyNewsData();
     this.getEconomyDailyNewsData();
     this.getYangchengData();
+    this.getEnvironmentNewsData();
   }
 }
 </script>

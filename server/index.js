@@ -52,7 +52,15 @@ app.use('/epaper', createProxyMiddleware({
   }
 }));
 
-
+// 中国环境报，报纸阅读转发
+app.use('/html', createProxyMiddleware({
+  target: 'http://epaper.cenews.com.cn/',
+  changeOrigin: true,
+  onProxyRes: function (proxyRes, req, res) {
+    proxyRes.headers['Access-Control-Allow-Origin'] = '*';
+    proxyRes.headers['Access-Control-Allow-Credentials'] = 'true';
+  }
+}));
 
 https
   .createServer(httpsOption, app)
