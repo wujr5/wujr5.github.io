@@ -2,6 +2,8 @@ const express = require('express')
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const fs = require('fs');
 const https = require('https')
+const superagent = require('superagent')
+const cheerio = require('cheerio')
 
 const port = 50501
 
@@ -61,6 +63,43 @@ app.use('/html', createProxyMiddleware({
     proxyRes.headers['Access-Control-Allow-Credentials'] = 'true';
   }
 }));
+
+// 环球时报、参考消息
+app.get('/hqck', (req, res) => {
+  superagent
+    .get('https://www.hqck.net/ckxx.html')
+    .then((res0) => {
+      let $ = cheerio.load(res0.text);
+      let sTodayUrl = $('.jBoxBody li a')[0].attribs.href;
+
+      let sBaseTodayUrl = sTodayUrl.substr(0, sTodayUrl.lastIndexOf('/') + 1);
+
+      superagent
+        .get(sTodayUrl)
+        .then((res1) => {
+          let $$ = cheerio.load(res1.text);
+          let aPageUrl = [];
+
+          let aOptions = $$('.newspaper > .paging > .pagelist > #dedepagetitles').children();
+          aOptions.map((key, item) => {
+            if (key > aOptions.length / 2 - 1) return;
+            aPageUrl.push(sBaseTodayUrl + item.attribs.value);
+          })
+
+          let aPageText = Promise.all(aPageUrl.map((item) => {
+            return superagent
+              .get(item)
+              .then((res2) => {
+                return cheerio.load(res2.text)('img')[0].attribs.src;
+              })
+          }))
+
+          aPageText.then((res3) => {
+            res.send({ urls: res3 });
+          })
+        })
+    })
+})
 
 https
   .createServer(httpsOption, app)
