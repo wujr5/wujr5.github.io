@@ -22,6 +22,16 @@
     pdf2img(:data="aRMDailyNews" name="rmrb" :scale="1.8" :gap="10" type="pdf" v-if="aRMDailyNews.length")
     .h-920.bg-text(v-else)
 
+    h2.mb-10 参考消息
+
+    pdf2img(:data="aCankaoxiaoxi" name="cankao" :scale="1.8" :gap="12" type="img" v-if="aCankaoxiaoxi.length")
+    .h-920.bg-text(v-else)
+
+    h2.mb-10 环球时报
+
+    pdf2img(:data="aHuanqiushibao" name="huanqiu" :scale="1.8" :gap="12" type="img" v-if="aHuanqiushibao.length")
+    .h-920.bg-text(v-else)
+
     h2.mb-10 经济日报
 
     pdf2img(:data="aEconomyDaily" name="economy" :scale="1.8" :gap="10" type="pdf" v-if="aEconomyDaily.length")
@@ -30,16 +40,6 @@
     h2.mb-10 中国环境报
 
     pdf2img(:data="aEnvironmentNews" name="environment" :scale="1.8" :gap="25" type="pdf" v-if="aEnvironmentNews.length")
-    .h-920.bg-text(v-else)
-
-    h2.mb-10 参考消息
-
-    pdf2img(:data="aCankaoxiaoxi" name="cankao" :scale="1.8" :gap="7" type="img" v-if="aCankaoxiaoxi.length")
-    .h-920.bg-text(v-else)
-
-    h2.mb-10 环球时报
-
-    pdf2img(:data="aHuanqiushibao" name="huanqiu" :scale="1.8" :gap="7" type="img" v-if="aHuanqiushibao.length")
     .h-920.bg-text(v-else)
 
     h2.mb-10 羊城晚报
