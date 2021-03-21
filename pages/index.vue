@@ -24,12 +24,12 @@
 
     h2.mb-10 参考消息
 
-    pdf2img(:data="aCankaoxiaoxi" name="cankao" :scale="1.8" :gap="15" type="img" v-if="aCankaoxiaoxi.length")
+    pdf2img(:data="aCankaoxiaoxi" name="cankao" :scale="1.8" :gap="20" type="img" v-if="aCankaoxiaoxi.length")
     .h-920.bg-text(v-else)
 
     h2.mb-10 环球时报
 
-    pdf2img(:data="aHuanqiushibao" name="huanqiu" :scale="1.8" :gap="15" type="img" v-if="aHuanqiushibao.length")
+    pdf2img(:data="aHuanqiushibao" name="huanqiu" :scale="1.8" :gap="20" type="img" v-if="aHuanqiushibao.length")
     .h-920.bg-text(v-else)
 
     h2.mb-10 经济日报
