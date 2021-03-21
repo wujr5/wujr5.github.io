@@ -14,6 +14,13 @@ const httpsOption = {
 
 const app = express();
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+
+  next();
+})
+
 // 新京报，报纸阅读转发
 app.use('/ipaper', createProxyMiddleware({
   target: 'http://appimg2.tbnimg.com/',

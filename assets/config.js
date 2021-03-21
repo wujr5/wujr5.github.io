@@ -1,6 +1,6 @@
 export default {
-  sVersion: 'v2021.0317.1830',
-  sComment: '更新记单词链接',
+  sVersion: 'v2021.0321.1200',
+  sComment: '添加参考消息和环球时报',
   aTodoList: [{
     title: '猫和打扫'
   }, {
