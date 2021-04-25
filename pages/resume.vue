@@ -3,16 +3,27 @@
   .t-r.fs-14.c-gray.mb-10 2021-04 更新
   .h-200.bg-text.px-20.pt-20.pst-rlt
     .inbl.vtal-top.wp-50
-      .h-100.lh-100.fs-72 吴家荣
+      .h-90.lh-90.fs-62 吴家荣
       .h-24.lh-24 https://wujr5.cn
       .h-24.lh-24 中山大学（2013~2017 本科，软件工程）
       .h-24.lh-24 英语六级
-    .inbl.vtal-top.wp-20.fl-r
-      .h-24.lh-24 手机：17611270102
-      .h-24.lh-24 微信：17611270102
-      .h-24.lh-24 邮箱：973430584@qq.com
-      .h-24.lh-24 年限：工作 4 年
-    .pst-absl.w-180.h-180.bg-black.br-90.vh.ovfl-hd(style="top: 100%; z-index: 100")
+    .inbl.vtal-top.wp-18.fl-r.pt-50
+      .h-24.lh-24
+        .inbl.vtal-top.w-80.c-gray 手机
+        .inbl.vtal-top 17611270102
+      .h-24.lh-24
+        .inbl.vtal-top.w-80.c-gray 微信
+        .inbl.vtal-top wujr_5
+      .h-24.lh-24
+        .inbl.vtal-top.w-80.c-gray Github
+        .inbl.vtal-top github.com/wujr5
+      .h-24.lh-24
+        .inbl.vtal-top.w-80.c-gray 邮箱
+        .inbl.vtal-top 973430584@qq.com
+      .h-24.lh-24
+        .inbl.vtal-top.w-80.c-gray 年限
+        .inbl.vtal-top 工作 4 年
+    .pst-absl.w-180.h-180.bg-black.br-90.vh.ovfl-hd(style="top: 80%; z-index: 100")
       img.wp-100.hp-100(src="avatar.jpeg")
 
   .bg-text.mt-10.px-20.pt-10.pb-30.pst-rlt
@@ -223,16 +234,13 @@
       .inbl.vtal-top.w-300.h-200.br-8.mr-20.px-10(style="border: 1px solid #ddd")
         h4 团队
         ul
-          li 1
-          li 需求管理
-          li 迭代节奏
+          li 制定团队阶段性工作计划和目标
+          li 定期召开分享会
 
       .inbl.vtal-top.w-300.h-200.br-8.mr-20.px-10(style="border: 1px solid #ddd")
         h4 流程
         ul
-          li 1
-          li 需求管理
-          li 迭代节奏
+          li 流程化标准操作
 
     h1 重要学习
 
