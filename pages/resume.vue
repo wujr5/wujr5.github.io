@@ -24,7 +24,7 @@
         .inbl.vtal-top.w-80.c-gray 年限
         .inbl.vtal-top 工作 4 年
     .pst-absl.w-180.h-180.bg-black.br-90.vh.ovfl-hd(style="top: 80%; z-index: 100")
-      img.wp-100.hp-100(src="avatar.jpeg")
+      img.wp-100.hp-100(src="/avatar.jpeg")
 
   .bg-text.mt-10.px-20.pt-10.pb-30.pst-rlt
     h1 重要经历
