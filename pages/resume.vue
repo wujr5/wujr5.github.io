@@ -7,7 +7,7 @@
       .h-24.lh-24 https://wujr5.cn
       .h-24.lh-24 中山大学（2013~2017 本科，软件工程）
       .h-24.lh-24 英语六级
-    .inbl.vtal-top.wp-18.fl-r.pt-50
+    .inbl.vtal-top.wp-22.fl-r.pt-50
       .h-24.lh-24
         .inbl.vtal-top.w-80.c-gray 手机
         .inbl.vtal-top 17611270102
