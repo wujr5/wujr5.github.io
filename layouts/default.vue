@@ -2,7 +2,7 @@
 div
   .h-50(style="background-color: hsl(180, 100%, 40%)")
     .layout-default.t-r.pl-10
-      .inbl.vtal-top.h-50.w-50.fl-l.vh-parent
+      //- .inbl.vtal-top.h-50.w-50.fl-l.vh-parent
         img.w-80.h-80.pst-absl.l-10.t-5(src="/wu.png")
       nuxt-link.inbl.vtal-top.h-50.lh-50.w-130.t-c.c-white(
         to="/"
@@ -16,8 +16,12 @@ div
         to="/strategy"
         :style="`background-color: hsl(180, ${$route.path == '/strategy' ? '50%' : '100%'}, 40%); text-decoration: none`"
       ) 策略
+      nuxt-link.inbl.vtal-top.h-50.lh-50.w-130.t-c.c-white(
+        to="/resume"
+        :style="`background-color: hsl(180, ${$route.path == '/resume' ? '50%' : '100%'}, 40%); text-decoration: none`"
+      ) 简历
 
-  Nuxt.layout-default.bg-white
+  Nuxt.layout-default.bg-white(style="min-height: calc(100vh - 50px)")
 
   .pst-fx.w-65.h-65.lh-65.br-65.t-c.bd-1.b-160.r-50.fs-14.cs-pt.c-gray.bg-white(@click="fixedPage") {{bFixedPage ? '允许' : '禁止'}}滚动
 
