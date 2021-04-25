@@ -3,10 +3,10 @@
   .t-r.fs-14.c-gray.mb-10 2021-04 更新
   .h-200.bg-text.px-20.pt-20.pst-rlt
     .inbl.vtal-top.wp-50
-      .h-90.lh-90.fs-62 吴家荣
-      .h-24.lh-24 https://wujr5.cn
-      .h-24.lh-24 中山大学（2013~2017 本科，软件工程）
-      .h-24.lh-24 英语六级
+      a.dspl-bl.h-90.lh-90.fs-62(href="https://wujr5.cn/resume" target="_blank" style="text-decoration: none") 吴家荣
+      a.h-24.lh-24.c-gray(href="https://wujr5.cn" target="_blank") https://wujr5.cn
+      .h-24.lh-24.c-gray 中山大学（2013~2017 本科，软件工程）
+      .h-24.lh-24.c-gray 英语六级
     .inbl.vtal-top.wp-22.fl-r.pt-50
       .h-24.lh-24
         .inbl.vtal-top.w-80.c-gray 手机
@@ -16,7 +16,7 @@
         .inbl.vtal-top wujr_5
       .h-24.lh-24
         .inbl.vtal-top.w-80.c-gray Github
-        .inbl.vtal-top github.com/wujr5
+        a.inbl.vtal-top(href="https://github.com/wujr5" target="_blank") github.com/wujr5
       .h-24.lh-24
         .inbl.vtal-top.w-80.c-gray 邮箱
         .inbl.vtal-top 973430584@qq.com
@@ -90,13 +90,16 @@
             li 埋点
             li 向产品经理提供优化建议
 
-          p PC/H5 电商站点
+          p
+            a(href="https://www.ilovelook.cn" target="_blank") PC
+            |  /
+            a(href="https://mm.ilovelook.cn/" target="_blank")  H5
+            |  电商站点
           ul
             li 技术选型，项目架构
             li SEO 优化
             li 指导组员开发
             li 埋点
-          p （PC：https://www.ilovelook.cn，H5：https://mm.ilovelook.cn/）
 
           p 选品后台
           ul
@@ -147,7 +150,8 @@
 
         .inbl.vtal-top.wp-45
           h4 核心经历
-          p 重要经历：大三大四期间，作为创始人组建了技术团队 Matrix，负责学院的在线编程教学系统的研发（Online Judge），我负责前端模块的开发，团队人数最多时有 35 人，我是团队 Leader 之一。参考：https://www.zhihu.com/question/57888255（学信网验证码：ALRYWR92BM8Z31P8）
+          p 重要经历：大三大四期间，作为创始人组建了技术团队 Matrix，负责学院的在线编程教学系统的研发（Online Judge），我负责前端模块的开发，团队人数最多时有 35 人，我是团队 Leader 之一。
+          a(href="https://www.zhihu.com/question/57888255" target="_blank") 参考
 
     h1 技术能力
 
