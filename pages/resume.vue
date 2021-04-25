@@ -37,7 +37,9 @@
           .inbl.vtal-top.w-5.h-180.bg-green
 
       .inbl.vtal-top.w-1200.ml-20
-        div 北京万维科技发展有限公司 | B端产品经理
+        div
+          a(href="http://wanweitech.cn/" target="_blank") 北京万维科技发展有限公司
+          |  | B端产品经理
 
         .inbl.vtal-top.wp-45
           h4 重点工作
@@ -58,11 +60,12 @@
           .inbl.vtal-top.w-5.h-500.bg-green
 
       .inbl.vtal-top.w-1200.ml-20
-        div 北京言之有物科技有限公司 | 前端开发负责人
+        div
+          a(href="https://ilovelook.cn/about.html" target="_blank") 北京言之有物科技有限公司
+          |  | 前端开发负责人
 
         .inbl.vtal-top.wp-45
           h4 重点工作
-          p （业务简介：其一，服务 B 端，电商小程序提供商；其二，服务 C 端，有面向 C 端的电商 App 和电商小程序。点击查看官网）
 
           span 开发上：
           ul
@@ -115,7 +118,9 @@
         .t-c 2016.10
 
       .inbl.vtal-top.w-1200.ml-20
-        div 北京言之有物科技有限公司 | 前端开发工程（实习）
+        div
+          a(href="https://ilovelook.cn/about.html" target="_blank") 北京言之有物科技有限公司
+          |  | 前端开发工程（实习）
 
         .inbl.vtal-top.wp-45
           h4 重点工作
@@ -139,7 +144,9 @@
         .t-c 2013.08
 
       .inbl.vtal-top.w-1200.ml-20
-        div 中山大学 | 软件工程
+        div
+          a(href="http://www.sysu.edu.cn" target="_blank") 中山大学
+          |  | 软件工程
 
         .inbl.vtal-top.wp-45
           h4 主修课程
@@ -231,9 +238,9 @@
       .inbl.vtal-top.w-300.h-200.br-8.mr-20.px-10(style="border: 1px solid #ddd")
         h4 招聘
         ul
-          li 需求文档撰写
-          li 需求管理
-          li 迭代节奏
+          li 分层次设置面试题目
+          li 入职培训
+          li 融入集体
 
       .inbl.vtal-top.w-300.h-200.br-8.mr-20.px-10(style="border: 1px solid #ddd")
         h4 团队
