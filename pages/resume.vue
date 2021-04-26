@@ -3,8 +3,10 @@
   .t-r.fs-14.c-gray.mb-10 2021-04 更新
   .h-200.bg-text.px-20.pt-20.pst-rlt
     .inbl.vtal-top.wp-50
-      a.dspl-bl.h-90.lh-90.fs-62(href="https://wujr5.cn/resume" target="_blank" style="text-decoration: none") 吴家荣
-      a.h-24.lh-24.c-gray(href="https://wujr5.cn" target="_blank") https://wujr5.cn
+      .h-90.lh-90.fs-62
+        a(href="https://wujr5.cn/resume" target="_blank" style="text-decoration: none") 吴家荣
+      .h-24.lh-24.c-gray
+        a(href="https://wujr5.cn" target="_blank") https://wujr5.cn
       .h-24.lh-24.c-gray 中山大学（2013~2017 本科，软件工程）
       .h-24.lh-24.c-gray 英语六级
     .inbl.vtal-top.wp-22.fl-r.pt-50
@@ -23,7 +25,7 @@
       .h-24.lh-24
         .inbl.vtal-top.w-80.c-gray 年限
         .inbl.vtal-top 工作 4 年
-    .pst-absl.w-180.h-180.bg-black.br-90.vh.ovfl-hd(style="top: 80%; z-index: 100")
+    .pst-absl.w-180.h-180.br-90.vh.ovfl-hd(style="top: 80%; z-index: 100")
       img.wp-100.hp-100(src="/avatar.jpeg")
 
   .bg-text.mt-10.px-20.pt-10.pb-30.pst-rlt

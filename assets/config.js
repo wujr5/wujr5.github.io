@@ -1,5 +1,5 @@
 export default {
-  sVersion: 'v2021.0425.1500',
+  sVersion: '21.04.26',
   sComment: '更新简历',
   aTodoList: [{
     title: '猫和打扫'
