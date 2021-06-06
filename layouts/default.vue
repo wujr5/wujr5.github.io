@@ -23,7 +23,7 @@ div
 
   Nuxt.layout-default.bg-white(style="min-height: calc(100vh - 50px)")
 
-  .pst-fx.w-65.h-65.lh-65.br-65.t-c.bd-1.b-160.r-50.fs-14.cs-pt.c-gray.bg-white(@click="fixedPage") {{bFixedPage ? '允许' : '禁止'}}滚动
+  //- .pst-fx.w-65.h-65.lh-65.br-65.t-c.bd-1.b-160.r-50.fs-14.cs-pt.c-gray.bg-white(@click="fixedPage") {{bFixedPage ? '允许' : '禁止'}}滚动
 
   .h-150(style="background-color: hsl(0, 0%, 95%)")
     .layout-default

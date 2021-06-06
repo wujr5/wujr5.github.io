@@ -1,6 +1,6 @@
 export default {
-  sVersion: 'v21.05.07',
-  sComment: '更新简历',
+  sVersion: 'v21.06.06',
+  sComment: '优化首页报纸链接展示',
   aTodoList: [{
     title: '猫和打扫'
   }, {

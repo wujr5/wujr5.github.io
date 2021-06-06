@@ -13,39 +13,64 @@
         .check-item.pst-absl.lh-16.fs-12.r-5.b-0.cs-pt(style="color: #bbb;" @click="todo.bCheck = !todo.bCheck") {{todo.bCheck ? 'Uncheck' : 'Check'}}
 
     h2.mb-10 新京报
-
-    pdf2img(:data="aBJnews" name="bjnews" :scale="1.8" :gap="30" type="pdf" v-if="aBJnews.length")
-    .h-920.bg-text(v-else)
+    div(v-if="aBJnews && aBJnews.length > 0")
+      a.inbl.vtal-top.h-50.lh-50.fs-20.w-100.t-c.bd-1.br-4.mr-20.mb-20(
+        v-for="item, index in aBJnews"
+        :href="item.url"
+        target="_blank"
+      ) {{index + 1}}
+    .h-50.w-100.bg-loading(v-else-if="aBJnews && aBJnews.length == 0")
+    .h-50.w-100(v-else) 无数据
 
     h2.my-10 人民日报
+    div(v-if="aRMDailyNews && aRMDailyNews.length > 0")
+      a.inbl.vtal-top.h-50.lh-50.fs-20.w-100.t-c.bd-1.br-4.mr-20.mb-20(
+        v-for="item, index in aRMDailyNews"
+        :href="item.url"
+        target="_blank"
+      ) {{index + 1}}
+    .h-50.w-100.bg-loading(v-else-if="aRMDailyNews && aRMDailyNews.length == 0")
+    .h-50.w-100(v-else) 无数据
 
-    pdf2img(:data="aRMDailyNews" name="rmrb" :scale="1.8" :gap="30" type="pdf" v-if="aRMDailyNews.length")
-    .h-920.bg-text(v-else)
-
-    h2.mb-10 参考消息
-
-    pdf2img(:data="aCankaoxiaoxi" name="cankao" :scale="1.8" :gap="32" type="img" v-if="aCankaoxiaoxi.length")
-    .h-920.bg-text(v-else)
-
-    h2.mb-10 环球时报
-
-    pdf2img(:data="aHuanqiushibao" name="huanqiu" :scale="1.8" :gap="32" type="img" v-if="aHuanqiushibao.length")
-    .h-920.bg-text(v-else)
+    h2.mb-10 参考环球
+    div(v-if="aCankaoxiaoxi && aCankaoxiaoxi.length > 0")
+      a.inbl.vtal-top.h-50.lh-50.fs-20.w-100.t-c.bd-1.br-4.mr-20.mb-20(
+        v-for="item, index in aCankaoxiaoxi"
+        :href="item"
+        target="_blank"
+      ) {{index + 1}}
+    .h-50.w-100.bg-loading(v-else-if="aCankaoxiaoxi && aCankaoxiaoxi.length == 0")
+    .h-50.w-100(v-else) 无数据
 
     h2.mb-10 经济日报
-
-    pdf2img(:data="aEconomyDaily" name="economy" :scale="1.8" :gap="30" type="pdf" v-if="aEconomyDaily.length")
-    .h-920.bg-text(v-else)
+    div(v-if="aEconomyDaily && aEconomyDaily.length > 0")
+      a.inbl.vtal-top.h-50.lh-50.fs-20.w-100.t-c.bd-1.br-4.mr-20.mb-20(
+        v-for="item, index in aEconomyDaily"
+        :href="item.url"
+        target="_blank"
+      ) {{index + 1}}
+    .h-50.w-100.bg-loading(v-else-if="aEconomyDaily && aEconomyDaily.length == 0")
+    .h-50.w-100(v-else) 无数据
 
     h2.mb-10 中国环境报
-
-    pdf2img(:data="aEnvironmentNews" name="environment" :scale="1.8" :gap="25" type="pdf" v-if="aEnvironmentNews.length")
-    .h-920.bg-text(v-else)
+    div(v-if="aEnvironmentNews && aEnvironmentNews.length > 0")
+      a.inbl.vtal-top.h-50.lh-50.fs-20.w-100.t-c.bd-1.br-4.mr-20.mb-20(
+        v-for="item, index in aEnvironmentNews"
+        :href="item.url"
+        target="_blank"
+      ) {{index + 1}}
+    .h-50.w-100.bg-loading(v-else-if="aEnvironmentNews && aEnvironmentNews.length == 0")
+    .h-50.lh-50.w-100.c-gray(v-else) 无数据
 
     h2.mb-10 羊城晚报
-
-    pdf2img(:data="aYangchengNews" name="yangcheng" :scale="1.8" :gap="30" type="pdf" v-if="aYangchengNews.length")
-    .h-920.bg-text(v-else)
+    div(v-if="aYangchengNews && aYangchengNews.length > 0")
+      a.inbl.vtal-top.h-50.lh-50.fs-20.w-100.t-c.bd-1.br-4.mr-20.mb-20(
+        v-for="item, index in aYangchengNews"
+        :href="item.url"
+        target="_blank"
+      ) {{index + 1}}
+    .h-50.w-100.bg-loading(v-else-if="aYangchengNews && aYangchengNews.length == 0")
+    .h-50.w-100(v-else) 无数据
 
 </template>
 
@@ -92,7 +117,6 @@ export default {
       aYangchengNews: [],
       aEnvironmentNews: [],
       aCankaoxiaoxi: [],
-      aHuanqiushibao: [],
     }
   },
   methods: {
@@ -142,7 +166,13 @@ export default {
 
       Promise.all(aPromise)
         .then((res) => {
-          this.aBJnews = res.filter(i => i);
+          let result = res.filter(i => i);
+
+          if (result.length === 0) {
+            this.aBJnews = null;
+          } else {
+            this.aBJnews = result;
+          }
         })
     },
     // 获取人民日报数据
@@ -173,7 +203,13 @@ export default {
 
       Promise.all(aPromise)
         .then((res) => {
-          this.aRMDailyNews = res.filter(i => i);
+          let result = res.filter(i => i);
+
+          if (result.length === 0) {
+            this.aRMDailyNews = null;
+          } else {
+            this.aRMDailyNews = result;
+          }
         })
     },
     // 获取经济日报数据
@@ -205,7 +241,13 @@ export default {
 
       Promise.all(aPromise)
         .then((res) => {
-          this.aEconomyDaily = res.filter(i => i);
+          let result = res.filter(i => i);
+
+          if (result.length === 0) {
+            this.aEconomyDaily = null;
+          } else {
+            this.aEconomyDaily = result;
+          }
         })
     },
     // 获取中国环境报数据
@@ -238,7 +280,13 @@ export default {
 
       Promise.all(aPromise)
         .then((res) => {
-          this.aEnvironmentNews = res.filter(i => i);
+          let result = res.filter(i => i);
+
+          if (result.length === 0) {
+            this.aEnvironmentNews = null;
+          } else {
+            this.aEnvironmentNews = result;
+          }
         })
     },
     // 获取参考消息和环球时报数据
@@ -246,8 +294,13 @@ export default {
       axios
         .get(config.sServerHost + '/hqck')
         .then((res) => {
-          this.aCankaoxiaoxi = res.data.urls.slice(0, 8);
-          this.aHuanqiushibao = res.data.urls.slice(8);
+          let result = res.data.urls;
+
+          if (result.length === 0) {
+            this.aCankaoxiaoxi = null;
+          } else {
+            this.aCankaoxiaoxi = result;
+          }
         })
     },
     // 获取羊城晚报数据
@@ -295,7 +348,13 @@ export default {
 
       Promise.all(aPromise)
         .then((res) => {
-          this.aYangchengNews = res.filter(i => i);
+          let result = res.filter(i => i);
+
+          if (result.length === 0) {
+            this.aYangchengNews = null;
+          } else {
+            this.aYangchengNews = result;
+          }
         })
     },
   },
