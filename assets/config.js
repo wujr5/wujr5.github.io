@@ -17,7 +17,7 @@ export default {
     title: '下午报纸',
   }, {
     title: '检查代理',
-    link: 'https://azi.azzico.cc/user#'
+    link: 'https://azi.azzico.xyz/user#'
   }, {
     title: '今天天气',
     link: 'http://forecast.weather.com.cn/town/weather1dn/101010700002.shtml'

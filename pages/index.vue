@@ -3,14 +3,13 @@
     h2 {{sDateStr}}
 
     .my-20
-      .todo-item.inbl.vtal-top.w-178.h-60.lh-60.bd-1.t-c.mr-10.mb-10.br-4.pst-rlt(
+      .todo-item.inbl.vtal-top.w-178.h-60.lh-60.bd-1.t-c.mr-10.mb-10.br-4.pst-rlt.cs-pt(
         v-for="todo, index in aTodoList" :key="`todo-${index}`"
         :style="todo.bCheck ? 'background-color: #ddd' : ''"
+        @click="todo.bCheck = !todo.bCheck"
       )
         a(v-if="todo.link" :href="`${todo.link}?t=${sTimeStamp}`" target="_blank" style="text-decoration: none; color: blue") {{todo.title}}
         span(v-else) {{todo.title}}
-
-        .check-item.pst-absl.lh-16.fs-12.r-5.b-0.cs-pt(style="color: #bbb;" @click="todo.bCheck = !todo.bCheck") {{todo.bCheck ? 'Uncheck' : 'Check'}}
 
     h2.mb-10 新京报
     div(v-if="aBJnews && aBJnews.length > 0")
